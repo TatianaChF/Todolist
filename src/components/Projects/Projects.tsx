@@ -1,4 +1,7 @@
+import { useState } from "react"
+
 export const Projects = () => {
+    const [projects, setProjects] = useState([]);
     return (
         <div>
             <h1>Projects</h1>
