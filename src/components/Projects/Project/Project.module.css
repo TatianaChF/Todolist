@@ -1,0 +1,40 @@
+.project_container {
+    position: relative;
+    width: 1034px;
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    border-radius: 5px;
+    box-shadow: 2px -2px 5px 0 rgba(0,0,0,.1),
+     -2px -2px 5px 0 rgba(0,0,0,.1),
+    2px 2px 5px 0 rgba(0,0,0,.1),
+    -2px 2px 5px 0 rgba(0,0,0,.1);
+    padding: 7px 20px;
+    margin-bottom: 10px;
+}
+
+.project_title {
+    font-size: 24px;
+}
+
+.project_status_open {
+    font-size: 15px;
+    top: 38px;
+    position: relative;
+    color: green;
+}
+
+.project_status_closed {
+    font-size: 15px;
+    top: 38px;
+    position: relative;
+    color: red;
+}
+
+.project_status_progress {
+    font-size: 15px;
+    top: 38px;
+    position: relative;
+    color: blue;
+}
