@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
+import { Project } from "./Project/Project";
 
-type Data = {
-    id: string,
+export type Data = {
+    id: number,
     title: string,
     status: string
 }
@@ -30,14 +31,7 @@ export const Projects = () => {
             <div>
                 {
                     data?.map((value) => {
-                        return <p key={value.id}>{value.title}</p>
-                    })
-                }
-            </div>
-            <div>
-                {
-                    data?.map((value) => {
-                        return <p key={value.id}>{value.status}</p>
+                        return <Project key={value.id} id={value.id} title={value.title} status={value.status} />
                     })
                 }
             </div>
