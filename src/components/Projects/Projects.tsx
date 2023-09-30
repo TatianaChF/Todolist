@@ -34,6 +34,13 @@ export const Projects = () => {
                     })
                 }
             </div>
+            <div>
+                {
+                    data?.map((value) => {
+                        return <p key={value.id}>{value.status}</p>
+                    })
+                }
+            </div>
         </div>
     )
 }
