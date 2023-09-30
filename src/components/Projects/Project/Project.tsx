@@ -1,5 +1,10 @@
-export const Project = () => {
+import { Data } from "../Projects"
+
+export const Project = (props: Data) => {
     return (
-        <div></div>
+        <div>
+            {props.title}
+            {props.status}
+        </div>
     )
 }
