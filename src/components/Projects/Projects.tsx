@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { Project } from "./Project/Project";
+import styles from "./Projects.module.css"
 
 export type Data = {
     id: number,
@@ -27,7 +28,7 @@ export const Projects = () => {
 
     return (
         <div>
-            <h1>Projects</h1>
+            <h1 className={styles.header}>Projects</h1>
             <div>
                 {
                     data?.map((value) => {
