@@ -1,5 +1,7 @@
 export const Tasks = () => {
     return (
-        <div></div>
+        <div>
+            <h1>Tasks</h1>
+        </div>
     )
 }
