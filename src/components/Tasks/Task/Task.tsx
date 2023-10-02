@@ -1,4 +1,4 @@
-const Task = () => {
+export const Task = () => {
     return (
         <div></div>
     )
