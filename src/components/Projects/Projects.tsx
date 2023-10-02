@@ -34,7 +34,7 @@ export const Projects = () => {
                 {
                     data?.map((value) => {
                         return (
-                        <Link to="/tasks">
+                        <Link to={`/tasks/:${value.id}`}>
                             <Project key={value.id} id={value.id} title={value.title} status={value.status} />
                         </Link>)
                     })  
