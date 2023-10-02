@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
-import { Project } from "./Project/Project";
+import { Project } from "./Project/Project"
 import styles from "./Projects.module.css"
+import { Link } from "react-router-dom";
 
 export type Data = {
     id: number,
@@ -32,8 +33,11 @@ export const Projects = () => {
             <div>
                 {
                     data?.map((value) => {
-                        return <Project key={value.id} id={value.id} title={value.title} status={value.status} />
-                    })
+                        return (
+                        <Link to={`/tasks:/${value.id}`}>
+                            <Project key={value.id} id={value.id} title={value.title} status={value.status} />
+                        </Link>)
+                    })  
                 }
             </div>
         </div>
