@@ -1,12 +1,10 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { Projects } from './components/Projects/Projects';
+import { Outlet } from 'react-router';
 
 function App() {
   return (
     <div className="App">
-      <Projects />
+      <Outlet />
     </div>
   );
 }
