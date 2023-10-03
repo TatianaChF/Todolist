@@ -1,3 +1,5 @@
+import styles from "./Task.module.css";
+
 type propsData = {
     title: string,
     status: boolean
@@ -5,10 +7,10 @@ type propsData = {
 
 export const Task = (props: propsData) => {
     return (
-        <div>
+        <div className={styles.task_container}>
             <form>
                 <input type="checkbox" id="task" name="task" value={props.title} />
-                <label htmlFor="task">{props.title}</label> 
+                <label htmlFor="task" className={styles.task_label}>{props.title}</label> 
             </form>
         </div>
     )
