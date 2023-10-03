@@ -8,10 +8,7 @@ type propsData = {
 export const Task = (props: propsData) => {
     return (
         <div className={styles.task_container}>
-            <form>
-                <input type="checkbox" id="task" name="task" value={props.title} />
-                <label htmlFor="task" className={styles.task_label}>{props.title}</label> 
-            </form>
+            {props.title}
         </div>
     )
 }
