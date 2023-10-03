@@ -7,7 +7,7 @@ type TasksType = {
     id: number,
     id_projects: number,
     title: string,
-    isDone: boolean
+    status: string
 }
 
 export const Tasks = () => {
@@ -35,10 +35,10 @@ export const Tasks = () => {
                 <div>
                     <h4>Queue</h4>
                     {
-                        tasks?.filter((items) => items.id_projects.toString() === id).filter((item) => item.isDone === false)
+                        tasks?.filter((items) => items.id_projects.toString() === id).filter((item) => item.status === "queue")
                         .map((items) => {
                             return(
-                                <Task key={items.id} title={items.title} status={items.isDone} />
+                                <Task key={items.id} title={items.title} status={items.status} />
                             )
                         })
                     }
@@ -46,10 +46,10 @@ export const Tasks = () => {
                 <div>
                     <h4>Development</h4>
                     {
-                        tasks?.filter((items) => items.id_projects.toString() === id)
+                        tasks?.filter((items) => items.id_projects.toString() === id).filter((item) => item.status === "dev")
                         .map((items) => {
                             return(
-                                <Task key={items.id} title={items.title} status={items.isDone} />
+                                <Task key={items.id} title={items.title} status={items.status} />
                             )
                         })
                     }
@@ -57,10 +57,10 @@ export const Tasks = () => {
                 <div>
                     <h4>Done</h4>
                     {
-                        tasks?.filter((items) => items.id_projects.toString() === id).filter((item) => item.isDone === true)
+                        tasks?.filter((items) => items.id_projects.toString() === id).filter((item) => item.status === "done")
                         .map((items) => {
                             return(
-                                <Task key={items.id} title={items.title} status={items.isDone} />
+                                <Task key={items.id} title={items.title} status={items.status} />
                             )
                         })
                     }
@@ -69,12 +69,3 @@ export const Tasks = () => {
         </div>
     )
 }
-
-/* {
-                        tasks?.filter((items) => items.id_projects.toString() === id)
-                        .map((items) => {
-                            return(
-                                <Task key={items.id} title={items.title} status={items.isDone} />
-                            )
-                        })
-                } */

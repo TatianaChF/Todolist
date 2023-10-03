@@ -2,7 +2,7 @@ import styles from "./Task.module.css";
 
 type propsData = {
     title: string,
-    status: boolean
+    status: string
 }
 
 export const Task = (props: propsData) => {
