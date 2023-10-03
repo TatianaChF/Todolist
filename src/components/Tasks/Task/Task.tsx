@@ -6,8 +6,10 @@ type propsData = {
 export const Task = (props: propsData) => {
     return (
         <div>
-            {props.title}
-            {props.status}
+            <form>
+                <input type="checkbox" id="task" name="task" value={props.title} />
+                <label htmlFor="task">{props.title}</label> 
+            </form>
         </div>
     )
 }
