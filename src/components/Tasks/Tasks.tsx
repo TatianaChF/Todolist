@@ -7,7 +7,7 @@ type TasksType = {
     id: number,
     id_projects: number,
     title: string,
-    status: boolean
+    isDone: boolean
 }
 
 export const Tasks = () => {
@@ -16,12 +16,9 @@ export const Tasks = () => {
 
     const fetchTasks = () => {
         fetch("tasks.json").then(response => {
-            console.log(response);
             return response.json()
         }).then(data => {
-            console.log(data);
             setTasks(data);
-            console.log(tasks)
         }).catch((e: Error) => {
             console.log(e.message);
         })
@@ -35,14 +32,49 @@ export const Tasks = () => {
         <div>
             <h1 className={styles.header}>Tasks</h1>
             <div className={styles.container}>
-                {
-                    tasks?.filter((items) => items.id_projects.toString() === id).map((items) => {
-                        return(
-                            <Task key={items.id} title={items.title} status={items.status} />
-                        )
-                    })
-                }
+                <div>
+                    <h4>Queue</h4>
+                    {
+                        tasks?.filter((items) => items.id_projects.toString() === id).filter((item) => item.isDone === false)
+                        .map((items) => {
+                            return(
+                                <Task key={items.id} title={items.title} status={items.isDone} />
+                            )
+                        })
+                    }
+                </div>
+                <div>
+                    <h4>Development</h4>
+                    {
+                        tasks?.filter((items) => items.id_projects.toString() === id)
+                        .map((items) => {
+                            return(
+                                <Task key={items.id} title={items.title} status={items.isDone} />
+                            )
+                        })
+                    }
+                </div>
+                <div>
+                    <h4>Done</h4>
+                    {
+                        tasks?.filter((items) => items.id_projects.toString() === id).filter((item) => item.isDone === true)
+                        .map((items) => {
+                            return(
+                                <Task key={items.id} title={items.title} status={items.isDone} />
+                            )
+                        })
+                    }
+                </div>
             </div>
         </div>
     )
 }
+
+/* {
+                        tasks?.filter((items) => items.id_projects.toString() === id)
+                        .map((items) => {
+                            return(
+                                <Task key={items.id} title={items.title} status={items.isDone} />
+                            )
+                        })
+                } */
