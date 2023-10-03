@@ -1,7 +1,13 @@
 import { Data } from "../Projects"
 import styles from "./Project.module.css"
 
-export const Project = (props: Data) => {
+type PropsData = {
+    id: number,
+    title: string,
+    status: string
+}
+
+export const Project = (props: PropsData) => {
     return (
         <div className={styles.project_container}>
             <div className={styles.project_title}>
