@@ -12,7 +12,6 @@ type TasksType = {
 export const Tasks = () => {
     const [tasks, setTasks] = useState<TasksType[]>();
     const { id } = useParams();
-    const navigate = useNavigate(); 
 
     const fetchTasks = () => {
         fetch("tasks.json").then(response => {
@@ -36,7 +35,7 @@ export const Tasks = () => {
             <h1>Tasks</h1>
             <div>
                 {
-                    tasks?.map((items) => {
+                    tasks?.filter((items) => items.id_projects.toString() === id).map((items) => {
                         return(
                             <Task key={items.id} title={items.title} status={items.status} />
                         )
