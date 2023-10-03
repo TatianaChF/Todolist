@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"
 import { Task } from "./Task/Task"
-import { useNavigate, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router"
+import styles from "./Tasks.module.css"
 
 type TasksType = {
     id: number,
@@ -32,8 +33,8 @@ export const Tasks = () => {
 
     return (
         <div>
-            <h1>Tasks</h1>
-            <div>
+            <h1 className={styles.header}>Tasks</h1>
+            <div className={styles.container}>
                 {
                     tasks?.filter((items) => items.id_projects.toString() === id).map((items) => {
                         return(
