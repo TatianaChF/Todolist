@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 export type Data = {
     id: number,
     title: string,
-    status: string
+    status: string,
+    tasks: Array<any>
 }
 
 export const Projects = () => {
@@ -15,6 +16,7 @@ export const Projects = () => {
     const fetchProjects = () => {
         fetch("./projects.json")
         .then(response => {
+            console.log(response);
             return response.json();
         }).then(data => {
             setData(data);
@@ -34,7 +36,7 @@ export const Projects = () => {
                 {
                     data?.map((value) => {
                         return (
-                        <Link to={`/tasks/:${value.id}`}>
+                        <Link to={`${value.id}`} key={value.id}>
                             <Project key={value.id} id={value.id} title={value.title} status={value.status} />
                         </Link>)
                     })  
