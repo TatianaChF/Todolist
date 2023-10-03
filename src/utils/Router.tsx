@@ -13,7 +13,7 @@ export const router = createBrowserRouter([
                 element: <Projects />
             }, 
             {
-                path: "tasks/:id",
+                path: ":id",
                 element: <Tasks />
             }
         ]
