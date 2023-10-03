@@ -1,5 +1,13 @@
-export const Task = () => {
+type propsData = {
+    title: string,
+    status: string
+}
+
+export const Task = (props: propsData) => {
     return (
-        <div></div>
+        <div>
+            {props.title}
+            {props.status}
+        </div>
     )
 }
