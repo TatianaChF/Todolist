@@ -3,30 +3,30 @@
         "id": 0,
         "id_projects": 0,
         "title": "Task 380",
-        "status": "open"
+        "isDone": true
     },
     {
         "id": 1,
         "id_projects": 0,
         "title": "Task 381",
-        "status": "open"
+        "isDone": false
     },
     {
         "id": 2,
         "id_projects": 0,
         "title": "Task 382",
-        "status": "open"
+        "isDone": true
     },
     {
         "id": 3,
         "id_projects": 1,
         "title": "Task 100",
-        "status": "open"
+        "isDone": true
     },
     {
         "id": 4,
         "id_projects": 1,
         "title": "Task 101",
-        "status": "open"
+        "isDone": true
     }
 ]

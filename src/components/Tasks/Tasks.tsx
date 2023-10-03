@@ -6,7 +6,7 @@ type TasksType = {
     id: number,
     id_projects: number,
     title: string,
-    status: string
+    status: boolean
 }
 
 export const Tasks = () => {

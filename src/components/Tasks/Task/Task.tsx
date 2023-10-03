@@ -1,6 +1,6 @@
 type propsData = {
     title: string,
-    status: string
+    status: boolean
 }
 
 export const Task = (props: propsData) => {
