@@ -12,6 +12,8 @@ type TasksType = {
 
 export const Tasks = () => {
     const [tasks, setTasks] = useState<TasksType[]>();
+    const [currentBoard, setCurrentBoard] = useState(null);
+    const [currentItem, setCurrentItem] = useState(null);
     const { id } = useParams();
 
     const fetchTasks = () => {
@@ -28,29 +30,6 @@ export const Tasks = () => {
         fetchTasks();
     }, [])
 
-    const dragOverHandler = (e: any) => {
-        e.preventDefault();
-        if (e.target.className == "task_container") {
-            e.target.style.boxShadow  = "0 4px 3px gray";
-        }
-    }
-
-    const dragLeaveHandler = (e: any) => {
-
-    }
-
-    const dragStartHandler = (e: any) => {
-
-    }
-
-    const dragEndHandler = (e: any) => {
-
-    }
-
-    const dropHandler = (e: any) => {
-        e.preventDefault();
-    }
-
     return (
         <div>
             <h1 className={styles.header}>Tasks</h1>
@@ -63,12 +42,7 @@ export const Tasks = () => {
                             return(
                                 <Task key={items.id} 
                                     title={items.title} 
-                                    status={items.status} 
-                                    dragOverHandler={dragOverHandler} 
-                                    dragLeaveHandler={dragLeaveHandler} 
-                                    dragStartHandler={dragStartHandler} 
-                                    dragEndHandler={dragEndHandler} 
-                                    dropHandler={dropHandler} />
+                                    status={items.status} />
                             )
                         })
                     }
@@ -81,12 +55,7 @@ export const Tasks = () => {
                             return(
                                 <Task key={items.id} 
                                     title={items.title} 
-                                    status={items.status}
-                                    dragOverHandler={dragOverHandler} 
-                                    dragLeaveHandler={dragLeaveHandler} 
-                                    dragStartHandler={dragStartHandler} 
-                                    dragEndHandler={dragEndHandler} 
-                                    dropHandler={dropHandler} />
+                                    status={items.status} />
                             )
                         })
                     }
@@ -99,12 +68,7 @@ export const Tasks = () => {
                             return(
                                 <Task key={items.id} 
                                     title={items.title} 
-                                    status={items.status}
-                                    dragOverHandler={dragOverHandler} 
-                                    dragLeaveHandler={dragLeaveHandler} 
-                                    dragStartHandler={dragStartHandler} 
-                                    dragEndHandler={dragEndHandler} 
-                                    dropHandler={dropHandler} />
+                                    status={items.status} />
                             )
                         })
                     }
