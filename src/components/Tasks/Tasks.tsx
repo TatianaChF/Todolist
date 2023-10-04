@@ -32,7 +32,7 @@ export const Tasks = () => {
         <div>
             <h1 className={styles.header}>Tasks</h1>
             <div className={styles.container}>
-                <div>
+                <div className={styles.container_column}>
                     <h4>Queue</h4>
                     {
                         tasks?.filter((items) => items.id_projects.toString() === id).filter((item) => item.status === "queue")
@@ -43,7 +43,7 @@ export const Tasks = () => {
                         })
                     }
                 </div>
-                <div>
+                <div className={styles.container_column}>
                     <h4>Development</h4>
                     {
                         tasks?.filter((items) => items.id_projects.toString() === id).filter((item) => item.status === "dev")
@@ -54,7 +54,7 @@ export const Tasks = () => {
                         })
                     }
                 </div>
-                <div>
+                <div className={styles.container_column}>
                     <h4>Done</h4>
                     {
                         tasks?.filter((items) => items.id_projects.toString() === id).filter((item) => item.status === "done")
