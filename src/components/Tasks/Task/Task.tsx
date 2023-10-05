@@ -43,7 +43,6 @@ export const Task = ({name, currentColumnName, setItems, index, moveCardHandler}
             if (dragIndex === hoverIndex) {
                 return;
             }
-              
             const hoverBoundingRect = ref.current?.getBoundingClientRect();
             const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
             const clientOffset = monitor.getClientOffset();
@@ -57,8 +56,7 @@ export const Task = ({name, currentColumnName, setItems, index, moveCardHandler}
                 return;
             }
 
-           moveCardHandler(dragIndex, hoverIndex);
-              
+            moveCardHandler(dragIndex, hoverIndex); 
             item.index = hoverIndex;
         }
     })
