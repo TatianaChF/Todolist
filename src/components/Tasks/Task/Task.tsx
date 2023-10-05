@@ -1,6 +1,8 @@
-import { useDrag } from "react-dnd";
+import { useDrag, useDrop } from "react-dnd";
 import styles from "./Task.module.css";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useRef } from "react";
+import { COLUMN_NAMES } from "../../../constans";
+import { DragSourceMonitor } from 'react-dnd'
 
 type propsData = {
     name: string,
@@ -15,11 +17,55 @@ type propsData = {
     moveCardHandler: (dragIndex: number, hoverIndex: number) => void
 }
 
-export const Task = (props: propsData) => {
+export const Task = ({name, currentColumnName, setItems, index, moveCardHandler}: propsData) => {
+    const changeItemColumn = (currentItem: any, columnName: string) => {
+        setItems((prevState: any) => {
+            return prevState.map((e: any) => {
+                return {
+                    ...e,
+                    column: e.name === currentItem.name ? columnName : e.column
+                };
+            });
+        });
+    };
+
+    const ref = useRef<HTMLDivElement>(null);
+    const [, drop] = useDrop({
+        accept: "task",
+        hover(item: propsData, monitor) {
+            if (!ref.current) {
+                return;
+            }
+            
+            const dragIndex = item.index;
+            const hoverIndex = index;
+
+            if (dragIndex === hoverIndex) {
+                return;
+            }
+              
+            const hoverBoundingRect = ref.current?.getBoundingClientRect();
+            const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
+            const clientOffset = monitor.getClientOffset();
+            const hoverClientY = clientOffset!.y - hoverBoundingRect.top;
+
+            if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
+                return;
+            }
+
+            if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
+                return;
+            }
+
+           moveCardHandler(dragIndex, hoverIndex);
+              
+            item.index = hoverIndex;
+        }
+    })
     
     return (
         <div className={styles.task_container}>
-            {props.name}
+            {name}
         </div>
     )
 }
