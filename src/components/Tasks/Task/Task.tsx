@@ -1,7 +1,7 @@
-import { useDrag, useDrop } from "react-dnd";
-import styles from "./Task.module.css";
-import { Dispatch, SetStateAction, useRef } from "react";
-import { COLUMN_NAMES } from "../../../constans";
+import { useDrag, useDrop } from "react-dnd"
+import styles from "./Task.module.css"
+import { Dispatch, SetStateAction, useRef } from "react"
+import { COLUMN_NAMES } from "../../../constans"
 import { DragSourceMonitor } from 'react-dnd'
 
 type propsData = {
@@ -60,6 +60,38 @@ export const Task = ({name, currentColumnName, setItems, index, moveCardHandler}
             item.index = hoverIndex;
         }
     })
+
+    const [{ isDragging }, drag] = useDrag({
+        item: { index, name, currentColumnName, type: "task" },
+        end: (item: propsData, monitor) => {
+            const dropResult = monitor.getDropResult();
+
+            if (dropResult) {
+                const name  = dropResult;
+                const { QUEUE, DEV, DONE } = COLUMN_NAMES;
+                switch (name) {
+                    case QUEUE:
+                        changeItemColumn(item, QUEUE);
+                        break;
+                    case DEV:
+                        changeItemColumn(item, DEV);
+                        break;
+                    case DONE:
+                        changeItemColumn(item, DONE);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        },
+        collect: (monitor: DragSourceMonitor) => ({
+            isDragging: monitor.isDragging()
+        })
+    });
+
+    const opacity = isDragging ? 0.4 : 1;
+
+    drag(drop(ref));
     
     return (
         <div className={styles.task_container}>
