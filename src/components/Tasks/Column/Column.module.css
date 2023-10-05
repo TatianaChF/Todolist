@@ -1,0 +1,12 @@
+.column {
+    margin-top: 15px;
+    width: 150px;
+    height: 300px;
+    border-radius: 5px;
+    box-shadow: 2px -2px 5px 0 rgba(0,0,0,.1),
+     -2px -2px 5px 0 rgba(0,0,0,.1),
+    2px 2px 5px 0 rgba(0,0,0,.1),
+    -2px 2px 5px 0 rgba(0,0,0,.1);
+    padding: 10px 50px;
+    background-color: rgb(226, 226, 226);
+}

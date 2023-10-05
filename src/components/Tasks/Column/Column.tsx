@@ -1,4 +1,4 @@
-import { COLUMN_NAMES } from "../../../constans"
+import styles from "./Column.module.css"
 
 type PropsColumn = {
     title: string
@@ -6,7 +6,7 @@ type PropsColumn = {
 
 export const Column = (props: PropsColumn) => {
     return (
-        <div>
+        <div className={styles.column}>
             <p>{props.title}</p>
         </div>
     )
