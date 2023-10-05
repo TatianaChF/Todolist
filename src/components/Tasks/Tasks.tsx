@@ -20,7 +20,11 @@ export const Tasks = () => {
 
     const returnItemsForColumn = (columnName: string) => {
         return items.filter((item) => item.column === columnName).map((item, index) => (
-            <Task key={item.id} name={item.title} />
+            <Task key={item.id} 
+                name={item.title} 
+                currentColumnName={item.column} 
+                setItems={setItems} 
+                index={index} />
         ))
     }
 

@@ -1,8 +1,17 @@
 import { useDrag } from "react-dnd";
 import styles from "./Task.module.css";
+import { Dispatch, SetStateAction } from "react";
 
 type propsData = {
-    name: string
+    name: string,
+    currentColumnName: string
+    setItems: Dispatch<SetStateAction<{ 
+        id: number; 
+        id_projects: number; 
+        title: string; 
+        column: string; 
+    }[]>>,
+    index: number
 }
 
 export const Task = (props: propsData) => {
