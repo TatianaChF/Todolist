@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react"
-import { Task } from "./Task/Task"
-import { useNavigate, useParams } from "react-router"
+import { useState } from "react"
 import styles from "./Tasks.module.css"
 import { tasks } from "../../tasks"
 import { COLUMN_NAMES } from "../../constans"
 import { DndProvider } from "react-dnd"
 import { HTML5Backend } from "react-dnd-html5-backend"
+import { Column } from "./Column/Column"
 
 type TasksType = {
     id: number,
@@ -21,7 +20,9 @@ export const Tasks = () => {
     return (
         <div className={styles.container}>
             <DndProvider backend={HTML5Backend}>
-                
+                <Column title={ QUEUE }></Column>
+                <Column title={ DEV }></Column>
+                <Column title={ DONE }></Column>
             </DndProvider>
         </div>
     )
