@@ -2,16 +2,14 @@ import { useDrag } from "react-dnd";
 import styles from "./Task.module.css";
 
 type propsData = {
-    title: string,
-    status: string
+    name: string
 }
 
 export const Task = (props: propsData) => {
     
     return (
-        <div className={styles.task_container}
-            draggable={true}>
-            {props.title}
+        <div className={styles.task_container}>
+            {props.name}
         </div>
     )
 }
