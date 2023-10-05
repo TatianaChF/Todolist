@@ -6,6 +6,8 @@ type PropsColumn = {
 
 export const Column = (props: PropsColumn) => {
     return (
-        <div></div>
+        <div>
+            <p>{props.title}</p>
+        </div>
     )
 }
