@@ -11,7 +11,8 @@ type propsData = {
         title: string; 
         column: string; 
     }[]>>,
-    index: number
+    index: number,
+    moveCardHandler: (dragIndex: number, hoverIndex: number) => void
 }
 
 export const Task = (props: propsData) => {

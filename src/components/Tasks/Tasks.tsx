@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { SetStateAction, useState } from "react"
 import styles from "./Tasks.module.css"
 import { tasks } from "../../tasks"
 import { COLUMN_NAMES } from "../../constans"
@@ -18,13 +18,39 @@ export const Tasks = () => {
     const [items, setItems] = useState(tasks);
     const { QUEUE, DEV, DONE } = COLUMN_NAMES;
 
+    const moveCardHandler = (dragIndex: number, hoverIndex: number) => {
+        const dragItem = items[dragIndex];
+
+        if (dragItem) {
+            setItems((prevState: SetStateAction<{ 
+                id: number; 
+                id_projects: 
+                number; title: 
+                string; column: 
+                string; 
+            }[]>) => {
+                if (Array.isArray(prevState)) {
+                    const coppiedStateArray = [...prevState];
+                    const prevItem = coppiedStateArray.splice(hoverIndex, 1, dragItem);
+
+                    coppiedStateArray.splice(dragIndex, 1, prevItem[0]);
+
+                    return coppiedStateArray;
+                }
+                
+                return [];
+            })
+        }
+    }
+
     const returnItemsForColumn = (columnName: string) => {
         return items.filter((item) => item.column === columnName).map((item, index) => (
             <Task key={item.id} 
                 name={item.title} 
                 currentColumnName={item.column} 
                 setItems={setItems} 
-                index={index} />
+                index={index} 
+                moveCardHandler={moveCardHandler} />
         ))
     }
 
