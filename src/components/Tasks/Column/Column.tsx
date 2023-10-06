@@ -29,6 +29,18 @@ export const Column = (props: PropsColumn) => {
         }
     });
 
+    const getBackgroundColor = () => {
+        if (isOver) {
+            if (canDrop) {
+                return "rgb(188,251,255)";
+            } else if (!canDrop) {
+                return "rgb(255,188,188)";
+            } else {
+                return "";
+            }
+        }
+    }
+
     return (
         <div className={styles.column}>
             <p>{props.title}</p>
