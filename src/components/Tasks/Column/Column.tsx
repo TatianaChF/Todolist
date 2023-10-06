@@ -42,7 +42,7 @@ export const Column = (props: PropsColumn) => {
     }
 
     return (
-        <div className={styles.column}>
+        <div ref={drop} className={styles.column} style={{background: getBackgroundColor()}}>
             <p>{props.title}</p>
             {props.children}
         </div>
