@@ -17,7 +17,7 @@ type propsData = {
     moveCardHandler: (dragIndex: number, hoverIndex: number) => void
 }
 
-const TASK_DND_TYPE = "TASK_DND_TYPE";
+export const TASK_DND_TYPE = "TASK_DND_TYPE";
 
 export const Task = ({name, currentColumnName, setItems, index, moveCardHandler}: propsData) => {
     const changeItemColumn = (currentItem: any, columnName: string) => {
