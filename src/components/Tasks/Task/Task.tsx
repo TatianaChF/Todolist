@@ -100,7 +100,7 @@ export const Task = ({name, currentColumnName, setItems, index, moveCardHandler}
     drag(drop(ref));
     
     return (
-        <div className={styles.task_container}>
+        <div className={styles.task_container} ref={ref} style={{opacity}}>
             {name}
         </div>
     )
