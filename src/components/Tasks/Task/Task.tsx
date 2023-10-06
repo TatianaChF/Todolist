@@ -17,6 +17,8 @@ type propsData = {
     moveCardHandler: (dragIndex: number, hoverIndex: number) => void
 }
 
+const TASK_DND_TYPE = "TASK_DND_TYPE";
+
 export const Task = ({name, currentColumnName, setItems, index, moveCardHandler}: propsData) => {
     const changeItemColumn = (currentItem: any, columnName: string) => {
         setItems((prevState: any) => {
@@ -31,7 +33,7 @@ export const Task = ({name, currentColumnName, setItems, index, moveCardHandler}
 
     const ref = useRef<HTMLDivElement>(null);
     const [, drop] = useDrop({
-        accept: "task",
+        accept: TASK_DND_TYPE,
         hover(item: propsData, monitor) {
             if (!ref.current) {
                 return;
@@ -62,8 +64,12 @@ export const Task = ({name, currentColumnName, setItems, index, moveCardHandler}
     })
 
     const [{ isDragging }, drag] = useDrag({
-        item: { index, name, currentColumnName, type: "task" },
-        end: (item: propsData, monitor) => {
+        type: TASK_DND_TYPE,
+        item: { 
+            type: TASK_DND_TYPE,
+            index, name, currentColumnName,
+         },
+        end: (item, monitor) => {
             const dropResult = monitor.getDropResult();
 
             if (dropResult) {
