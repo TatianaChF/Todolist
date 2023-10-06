@@ -32,7 +32,7 @@ export const Task = ({name, currentColumnName, setItems, index, moveCardHandler}
     };
 
     const ref = useRef<HTMLDivElement>(null);
-    const [, drop] = useDrop({
+    const [, drop] = useDrop(() => ({
         accept: TASK_DND_TYPE,
         hover(item: propsData, monitor) {
             if (!ref.current) {
@@ -61,9 +61,9 @@ export const Task = ({name, currentColumnName, setItems, index, moveCardHandler}
             moveCardHandler(dragIndex, hoverIndex); 
             item.index = hoverIndex;
         }
-    })
+    }))
 
-    const [{ isDragging }, drag] = useDrag({
+    const [{ isDragging }, drag] = useDrag(() => ({
         type: TASK_DND_TYPE,
         item: { 
             type: TASK_DND_TYPE,
@@ -93,7 +93,7 @@ export const Task = ({name, currentColumnName, setItems, index, moveCardHandler}
         collect: (monitor: DragSourceMonitor) => ({
             isDragging: monitor.isDragging()
         })
-    });
+    }));
 
     const opacity = isDragging ? 0.4 : 1;
 

@@ -9,7 +9,7 @@ type PropsColumn = {
 }
 
 export const Column = (props: PropsColumn) => {
-    const [{ isOver, canDrop }, drop] = useDrop({
+    const [{ isOver, canDrop }, drop] = useDrop(() => ({
         accept: TASK_DND_TYPE,
         drop: () => ({name: props.title}),
         collect: (monitor) => ({
@@ -27,7 +27,7 @@ export const Column = (props: PropsColumn) => {
                 (currentColumnName === DONE && props.title === DEV)
             );
         }
-    });
+    }));
 
     const getBackgroundColor = () => {
         if (isOver) {
