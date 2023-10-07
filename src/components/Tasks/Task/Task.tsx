@@ -3,6 +3,7 @@ import styles from "./Task.module.css"
 import { Dispatch, SetStateAction, useRef } from "react"
 import { COLUMN_NAMES } from "../../../constans"
 import { DragSourceMonitor } from 'react-dnd'
+import { TasksType } from "../Tasks"
 
 type propsData = {
     name: string,
@@ -17,24 +18,39 @@ type propsData = {
     moveCardHandler: (dragIndex: number, hoverIndex: number) => void
 }
 
+type ItemType = {
+    type: string,
+    index: number, 
+    name: string, 
+    currentColumnName: string
+}
+
 export const TASK_DND_TYPE = "TASK_DND_TYPE";
 
 export const Task = ({name, currentColumnName, setItems, index, moveCardHandler}: propsData) => {
-    const changeItemColumn = (currentItem: any, columnName: string) => {
-        setItems((prevState: any) => {
-            return prevState.map((e: any) => {
-                return {
-                    ...e,
-                    column: e.name === currentItem.name ? columnName : e.column
-                };
-            });
+    const changeItemColumn = (currentItem: ItemType, columnName: string) => {
+        setItems((prevState: TasksType[]
+            ) => {
+                if (Array.isArray(prevState)) {
+                    return prevState.map((e: TasksType) => {
+                        return {
+                            ...e,
+                            column: e.title === currentItem.name ? columnName : e.column
+                        };
+                    });
+                }
+                return [];
         });
     };
 
     const ref = useRef<HTMLDivElement>(null);
     const [, drop] = useDrop(() => ({
         accept: TASK_DND_TYPE,
-        hover(item: propsData, monitor) {
+        hover(item: {
+            index: number, 
+            name: string, 
+            currentColumnName: string
+            }, monitor) {
             if (!ref.current) {
                 return;
             }
