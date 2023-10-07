@@ -31,6 +31,7 @@ export const Task = ({name, currentColumnName, setItems, index, moveCardHandler}
     
     const [{ isDragging }, drag] = useDrag(() => ({
         type: TASK_DND_TYPE,
+        item: { name },
         collect: (monitor) => ({
             isDragging: !!monitor.isDragging()
         })
