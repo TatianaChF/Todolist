@@ -7,11 +7,11 @@ import { HTML5Backend } from "react-dnd-html5-backend"
 import { Column } from "./Column/Column"
 import { Task } from "./Task/Task"
 
-type TasksType = {
+export type TasksType = {
     id: number,
     id_projects: number,
     title: string,
-    status: string
+    column: string
 }
 
 export const Tasks = () => {
@@ -22,13 +22,7 @@ export const Tasks = () => {
         const dragItem = items[dragIndex];
 
         if (dragItem) {
-            setItems((prevState: SetStateAction<{ 
-                id: number; 
-                id_projects: 
-                number; title: 
-                string; column: 
-                string; 
-            }[]>) => {
+            setItems((prevState: TasksType[]) => {
                 if (Array.isArray(prevState)) {
                     const coppiedStateArray = [...prevState];
                     const prevItem = coppiedStateArray.splice(hoverIndex, 1, dragItem);
