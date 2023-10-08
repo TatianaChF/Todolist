@@ -2,10 +2,10 @@ import { SetStateAction, useState } from "react"
 import styles from "./Tasks.module.css"
 import { tasks } from "../../tasks"
 import { COLUMN_NAMES } from "../../constans"
-import { DndProvider } from "react-dnd"
+import { DndProvider, useDrop } from "react-dnd"
 import { HTML5Backend } from "react-dnd-html5-backend"
 import { Column } from "./Column/Column"
-import { Task } from "./Task/Task"
+import { TASK_DND_TYPE, Task } from "./Task/Task"
 
 export type TasksType = {
     id: number,
@@ -18,23 +18,16 @@ export const Tasks = () => {
     const [items, setItems] = useState(tasks);
     const { QUEUE, DEV, DONE } = COLUMN_NAMES;
 
-    const moveCardHandler = (dragIndex: number, hoverIndex: number) => {
-        const dragItem = items[dragIndex];
+    const [{ isOver }, drop] = useDrop(() => ({
+        accept: TASK_DND_TYPE,
+        drop: (item: any) => addItemToSection(item.name),
+        collect: (monitor) => ({
+            isOver: !!monitor.isOver()
+        })
+    }));
 
-        if (dragItem) {
-            setItems((prevState: TasksType[]) => {
-                if (Array.isArray(prevState)) {
-                    const coppiedStateArray = [...prevState];
-                    const prevItem = coppiedStateArray.splice(hoverIndex, 1, dragItem);
-
-                    coppiedStateArray.splice(dragIndex, 1, prevItem[0]);
-
-                    return coppiedStateArray;
-                }
-                
-                return [];
-            })
-        }
+    const addItemToSection = (name: string) => {
+        console.log("droped", name);
     }
 
     const returnItemsForColumn = (columnName: string) => {
@@ -43,14 +36,12 @@ export const Tasks = () => {
                 name={item.title} 
                 currentColumnName={item.column} 
                 setItems={setItems} 
-                index={index} 
-                moveCardHandler={moveCardHandler} />
+                index={index} />
         ))
     }
 
     return (
-        <div className={styles.container}>
-            <DndProvider backend={HTML5Backend}>
+        <div ref={drop} className={styles.container}>
                 <Column title={ QUEUE }>
                     {returnItemsForColumn(QUEUE)}
                 </Column>
@@ -60,7 +51,6 @@ export const Tasks = () => {
                 <Column title={ DONE }>
                     {returnItemsForColumn(DONE)}
                 </Column>
-            </DndProvider>
         </div>
     )
 }
