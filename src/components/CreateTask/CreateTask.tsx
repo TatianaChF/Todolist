@@ -11,7 +11,7 @@ export const CreateTask = ({task, setTask}: TaskProps) => {
     return (
         <form>
             <input className={styles.input_add} placeholder="Task name" type="text" />
-            <button>Create</button>
+            <button className={styles.button_add}>Create</button>
         </form>
     )
 }
