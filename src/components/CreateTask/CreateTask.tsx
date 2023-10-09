@@ -1,5 +1,6 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from "react"
 import { TasksType } from "../Tasks/Tasks"
+import styles from "./CreateTask.module.css"
 
 export type TaskProps = {
     task: TasksType[],
@@ -9,7 +10,7 @@ export type TaskProps = {
 export const CreateTask = ({task, setTask}: TaskProps) => {
     return (
         <form>
-            <input type="text" />
+            <input className={styles.input_add} placeholder="Task name" type="text" />
             <button>Create</button>
         </form>
     )
