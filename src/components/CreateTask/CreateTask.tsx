@@ -1,13 +1,15 @@
-import { Dispatch, SetStateAction } from "react"
+import { Dispatch, SetStateAction, useState } from "react"
 import { TasksType } from "../Tasks/Tasks"
 import styles from "./CreateTask.module.css"
 
-export type TaskProps = {
-    task: TasksType[],
-    setTask: Dispatch<SetStateAction<TasksType[]>>
+export type TasksProps = {
+    tasks: TasksType[],
+    setTasks: Dispatch<SetStateAction<TasksType[]>>
 }
 
-export const CreateTask = ({task, setTask}: TaskProps) => {
+export const CreateTask = ({tasks, setTasks}: TasksProps) => {
+    const [task, setTask] = useState();
+
     return (
         <form>
             <input className={styles.input_add} placeholder="Task name" type="text" />

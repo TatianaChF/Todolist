@@ -20,8 +20,8 @@ export const Tasks = () => {
 
     return (
         <div>
-            <CreateTask task={items} setTask={setItems} />
-            <Task task={items} setTask={setItems} />
+            <CreateTask tasks={items} setTasks={setItems} />
+            <Task tasks={items} setTasks={setItems} />
         </div>
     )
 }
