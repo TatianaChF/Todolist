@@ -8,8 +8,9 @@ export type TaskProps = {
 
 export const CreateTask = ({task, setTask}: TaskProps) => {
     return (
-        <div>
-
-        </div>
+        <form>
+            <input type="text" />
+            <button>Create</button>
+        </form>
     )
 }
