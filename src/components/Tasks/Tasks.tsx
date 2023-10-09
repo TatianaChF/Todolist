@@ -8,10 +8,10 @@ import { TASK_DND_TYPE, Task } from "./Task/Task"
 import { CreateTask } from "../CreateTask/CreateTask"
 
 export type TasksType = {
-    id: number,
-    id_projects: number,
+    id: string,
+    id_projects?: number,
     title: string,
-    column: string
+    column?: string
 }
 
 export const Tasks = () => {
