@@ -30,7 +30,7 @@ export const Tasks = () => {
 
     return (
         <div>
-            <CreateTask />
+            <CreateTask task={items} setTask={setItems} />
             <div className={styles.container}>
                 <Column title={ QUEUE } items={items} setItems={setItems}>
                     {returnItemsForColumn(QUEUE)}
