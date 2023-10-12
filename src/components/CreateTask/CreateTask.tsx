@@ -18,7 +18,7 @@ export const CreateTask = ({tasks, setTasks}: TasksProps) => {
 
     return (
         <form>
-            <input className={styles.input_add} placeholder="Task name" type="text" 
+            <input className={styles.input_add} value={task?.title} placeholder="Task name" type="text" 
             onChange={(e) => setTask({...task, id: uuidv4(), title: e.target.value })} />
             <button className={styles.button_add}>Create</button>
         </form>
