@@ -14,10 +14,25 @@ export type TasksProps = {
 }
 
 export const CreateTask = ({tasks, setTasks}: TasksProps) => {
-    const [task, setTask] = useState<TasksType>();
+    const [task, setTask] = useState<TasksType>({
+        id: "",
+        id_projects: 0,
+        title: "",
+        column: "queue"
+    });
+
+    const handleSubmit = (e: any) => {
+        e.preventDefault();
+
+        setTasks((prev: any) => {
+            const list = {...prev, task};
+
+            return list;
+        })
+    }
 
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <input className={styles.input_add} value={task?.title} placeholder="Task name" type="text" 
             onChange={(e) => setTask({...task, id: uuidv4(), title: e.target.value })} />
             <button className={styles.button_add}>Create</button>
