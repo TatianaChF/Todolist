@@ -2,47 +2,38 @@ import { useDrop } from "react-dnd"
 import styles from "./Column.module.css"
 import { TASK_DND_TYPE } from "../Task/Task"
 import { COLUMN_NAMES } from "../../../constans"
+import { TasksType } from "../Tasks"
+import { Dispatch, SetStateAction } from "react"
 
 type PropsColumn = {
     children: JSX.Element[],
-    title: string
+    title: string,
+    items: TasksType[],
+    setItems: Dispatch<SetStateAction<TasksType[]>>
 }
 
 export const Column = (props: PropsColumn) => {
-    const [{ isOver, canDrop }, drop] = useDrop(() => ({
+
+    /* const [{ isOver }, drop] = useDrop(() => ({
         accept: TASK_DND_TYPE,
-        drop: () => ({name: props.title}),
+        drop: (item: any) => addItemToSection(item.name, item.column),
         collect: (monitor) => ({
-            isOver: monitor.isOver(),
-            canDrop: monitor.canDrop()
-        }),
-        canDrop: (item) => {
-            const { QUEUE, DEV, DONE } = COLUMN_NAMES;
-            const currentColumnName = item;
-            return (
-                currentColumnName === props.title || 
-                (currentColumnName === QUEUE && props.title === DEV) ||
-                (currentColumnName === DEV && 
-                    (props.title === QUEUE || props.title === DONE)) ||
-                (currentColumnName === DONE && props.title === DEV)
-            );
-        }
+            isOver: !!monitor.isOver()
+        })
     }));
 
-    const getBackgroundColor = () => {
-        if (isOver) {
-            if (canDrop) {
-                return "rgb(188,251,255)";
-            } else if (!canDrop) {
-                return "rgb(255,188,188)";
-            } else {
-                return "";
-            }
-        }
-    }
+    const addItemToSection = (name: string, column: string) => {
+        props.setItems((prev: TasksType[]) => {
+            const mItem = prev.map(t => {
+                if(t.title=== props.items.) {
+                    return {...t, props.title: props.items.column}
+                }
+            })
+        })
+    } */
 
     return (
-        <div ref={drop} className={styles.column} style={{background: getBackgroundColor()}}>
+        <div className={styles.column}>
             <p>{props.title}</p>
             {props.children}
         </div>
