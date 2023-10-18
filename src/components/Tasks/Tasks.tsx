@@ -1,4 +1,4 @@
-import { SetStateAction, useState } from "react"
+import { Dispatch, SetStateAction, useEffect, useState } from "react"
 import styles from "./Tasks.module.css"
 import { tasks } from "../../tasks"
 import { COLUMN_NAMES } from "../../constans"
@@ -15,13 +15,37 @@ export type TasksType = {
 }
 
 export const Tasks = () => {
-    const [items, setItems] = useState(tasks);
+    const [items, setItems] = useState<TasksType[]>([]);
     const { QUEUE, DEV, DONE } = COLUMN_NAMES;
+
+    const fetchTasksData = () => {
+        fetch("./tasks.json").then(response => {
+            return response.json();
+        }).then(data => {
+            setItems(data);
+        }).catch((e: Error) => {
+            console.log(e.message);
+        })
+    }
+
+    useEffect(() => {
+        fetchTasksData();
+    }, [])
+
+
+    console.log(items);
 
     return (
         <div>
-            <CreateTask tasks={items} setTasks={setItems} />
-            <Task tasks={items} setTasks={setItems} />
+            <CreateTask items={items} setItems={setItems} />
+            {
+                items?.map((value) => {
+                    return (
+                        <Task key={value.id} id={value.id} id_projects={value.id_projects} 
+                        title={value.title} column={value.column} />
+                    )
+                })
+            }
         </div>
     )
 }
