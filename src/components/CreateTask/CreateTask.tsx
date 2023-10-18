@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from "react"
+import { Dispatch, MouseEventHandler, SetStateAction, useState } from "react"
 import { TasksType } from "../Tasks/Tasks"
 import styles from "./CreateTask.module.css"
 import { v4 as uuidv4 } from 'uuid';
@@ -17,7 +17,7 @@ export const CreateTask = ({items, setItems}: TasksProps) => {
         column: "queue"
     });
 
-    const addTask = (task: any) => {
+    const addTask = (task: TasksType) => {
         let newTasks = [task, ...items];
 
         setItems(newTasks);
@@ -48,7 +48,7 @@ export const CreateTask = ({items, setItems}: TasksProps) => {
         <form onSubmit={handleSubmit}>
             <input className={styles.input_add} value={task?.title} placeholder="Task name" type="text" 
             onChange={writeTask} />
-            <button className={styles.button_add} onClick={addTask}>Create</button>
+            <button className={styles.button_add} onClick={() => addTask}>Create</button>
         </form>
     )
 }
