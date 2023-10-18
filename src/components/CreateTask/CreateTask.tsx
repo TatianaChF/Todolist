@@ -1,4 +1,4 @@
-import { Dispatch, MouseEventHandler, SetStateAction, useState } from "react"
+import { ChangeEvent, Dispatch, FormEvent, MouseEventHandler, SetStateAction, useState } from "react"
 import { TasksType } from "../Tasks/Tasks"
 import styles from "./CreateTask.module.css"
 import { v4 as uuidv4 } from 'uuid';
@@ -23,7 +23,7 @@ export const CreateTask = ({items, setItems}: TasksProps) => {
         setItems(newTasks);
     }
 
-    const handleSubmit = (e: any) => {
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         if (!task) return;
@@ -37,12 +37,10 @@ export const CreateTask = ({items, setItems}: TasksProps) => {
         })
     }
 
-    const writeTask = (e: any) => {
+    const writeTask = (e: ChangeEvent<HTMLInputElement>) => {
         setTask({id: uuidv4(), title: e.target.value});
         
     }
-    
-    console.log(items);
 
     return (
         <form onSubmit={handleSubmit}>
