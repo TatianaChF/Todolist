@@ -1,8 +1,7 @@
-import { ChangeEvent, Dispatch, FormEvent, MouseEventHandler, SetStateAction, useState } from "react"
+import { ChangeEvent, Dispatch, FormEvent, SetStateAction, useState } from "react"
 import { TasksType } from "../Tasks/Tasks"
 import styles from "./CreateTask.module.css"
 import { v4 as uuidv4 } from 'uuid';
-import { assert } from "console";
 
 export type TasksProps = {
     items: TasksType[],
