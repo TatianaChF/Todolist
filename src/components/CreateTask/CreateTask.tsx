@@ -2,18 +2,14 @@ import { Dispatch, SetStateAction, useState } from "react"
 import { TasksType } from "../Tasks/Tasks"
 import styles from "./CreateTask.module.css"
 import { v4 as uuidv4 } from 'uuid';
+import { assert } from "console";
 
 export type TasksProps = {
-    tasks: TasksType[],
-    setTasks: Dispatch<SetStateAction<{ 
-        id: string; 
-        id_projects: number; 
-        title: string; 
-        column: string; 
-    }[]>>
+    items: TasksType[],
+    setItems: any
 }
 
-export const CreateTask = ({tasks, setTasks}: TasksProps) => {
+export const CreateTask = ({items, setItems}: TasksProps) => {
     const [task, setTask] = useState<TasksType>({
         id: "",
         id_projects: 0,
@@ -21,21 +17,38 @@ export const CreateTask = ({tasks, setTasks}: TasksProps) => {
         column: "queue"
     });
 
+    const addTask = (task: any) => {
+        let newTasks = [task, ...items];
+
+        setItems(newTasks);
+    }
+
     const handleSubmit = (e: any) => {
         e.preventDefault();
 
-        setTasks((prev: any) => {
-            const list = {...prev, task};
+        if (!task) return;
 
-            return list;
+        addTask(task);
+        setTask({
+            id: "",
+            id_projects: 0,
+            title: "",
+            column: "queue"
         })
     }
+
+    const writeTask = (e: any) => {
+        setTask({id: uuidv4(), title: e.target.value});
+        
+    }
+    
+    console.log(items);
 
     return (
         <form onSubmit={handleSubmit}>
             <input className={styles.input_add} value={task?.title} placeholder="Task name" type="text" 
-            onChange={(e) => setTask({...task, id: uuidv4(), title: e.target.value })} />
-            <button className={styles.button_add}>Create</button>
+            onChange={writeTask} />
+            <button className={styles.button_add} onClick={addTask}>Create</button>
         </form>
     )
 }
