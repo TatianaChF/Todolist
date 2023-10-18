@@ -6,6 +6,7 @@ import { useDrop } from "react-dnd"
 import { Column } from "./Column/Column"
 import { TASK_DND_TYPE, Task } from "./Task/Task"
 import { CreateTask } from "../CreateTask/CreateTask"
+import { useParams } from "react-router"
 
 export type TasksType = {
     id: string,
@@ -16,6 +17,7 @@ export type TasksType = {
 
 export const Tasks = () => {
     const [items, setItems] = useState<TasksType[]>([]);
+    const { id } = useParams();
     const { QUEUE, DEV, DONE } = COLUMN_NAMES;
 
     const fetchTasksData = () => {
@@ -39,7 +41,7 @@ export const Tasks = () => {
         <div>
             <CreateTask items={items} setItems={setItems} />
             {
-                items?.map((value) => {
+                items?.filter(tasks => tasks.id_projects?.toString() === id).map((value) => {
                     return (
                         <Task key={value.id} id={value.id} id_projects={value.id_projects} 
                         title={value.title} column={value.column} />
