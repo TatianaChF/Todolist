@@ -6,7 +6,7 @@ import { assert } from "console";
 
 export type TasksProps = {
     items: TasksType[],
-    setItems: any
+    setItems: Dispatch<SetStateAction<TasksType[]>>
 }
 
 export const CreateTask = ({items, setItems}: TasksProps) => {
