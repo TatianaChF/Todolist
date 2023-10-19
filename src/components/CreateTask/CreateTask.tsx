@@ -29,6 +29,7 @@ export const CreateTask = ({items, setItems}: TasksProps) => {
         if (!task) return;
 
         if (task.title.length < 3) return toast.error("The task length cannot be shorter than 3!");
+        else if (task.title.length > 100) return toast.error("The task length cannot be longer than 100!");
 
         addTask(task);
         setTask({
@@ -36,7 +37,9 @@ export const CreateTask = ({items, setItems}: TasksProps) => {
             id_projects: 0,
             title: "",
             column: "queue"
-        })
+        });
+
+        toast.success("Task created!");
     }
 
     const writeTask = (e: ChangeEvent<HTMLInputElement>) => {
