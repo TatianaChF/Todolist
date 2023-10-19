@@ -2,6 +2,7 @@ import { ChangeEvent, Dispatch, FormEvent, SetStateAction, useState } from "reac
 import { TasksType } from "../Tasks/Tasks"
 import styles from "./CreateTask.module.css"
 import { v4 as uuidv4 } from 'uuid';
+import toast from "react-hot-toast";
 
 export type TasksProps = {
     items: TasksType[],
@@ -27,7 +28,7 @@ export const CreateTask = ({items, setItems}: TasksProps) => {
 
         if (!task) return;
 
-        if (task.title.length < 3) return alert("The task length cannot be shorter than 3!");
+        if (task.title.length < 3) return toast.error("The task length cannot be shorter than 3!");
 
         addTask(task);
         setTask({

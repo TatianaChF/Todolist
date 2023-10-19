@@ -3,6 +3,7 @@ import { COLUMN_NAMES } from "../../constans"
 import { Task } from "./Task/Task"
 import { CreateTask } from "../CreateTask/CreateTask"
 import { useParams } from "react-router"
+import { Toaster } from "react-hot-toast"
 
 export type TasksType = {
     id: string,
@@ -30,8 +31,12 @@ export const Tasks = () => {
         fetchTasksData();
     }, [])
 
+    console.log(items);
+
     return (
-        <div>
+        <>
+            <Toaster />
+            <div>
             <CreateTask items={items} setItems={setItems} />
             {
                 items?.filter(tasks => tasks.id_projects?.toString() === id).map((value) => {
@@ -41,6 +46,7 @@ export const Tasks = () => {
                     )
                 })
             }
-        </div>
+            </div>
+        </>
     )
 }
