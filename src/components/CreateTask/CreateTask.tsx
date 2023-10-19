@@ -27,6 +27,8 @@ export const CreateTask = ({items, setItems}: TasksProps) => {
 
         if (!task) return;
 
+        if (task.title.length < 3) return alert("The task length cannot be shorter than 3!");
+
         addTask(task);
         setTask({
             id: "",
