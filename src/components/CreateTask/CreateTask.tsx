@@ -37,7 +37,7 @@ export const CreateTask = ({items, setItems}: TasksProps) => {
     }
 
     const writeTask = (e: ChangeEvent<HTMLInputElement>) => {
-        setTask({id: uuidv4(), title: e.target.value});
+        setTask({id: uuidv4(), title: e.target.value, id_projects: 0, column: "queue"});
         
     }
 
