@@ -14,9 +14,9 @@ export type TasksType = {
 
 export const Tasks = () => {
     const [items, setItems] = useState<TasksType[]>([]);
-    const [queue, setQueue] = useState([]);
-    const [dev, setDev] = useState([]);
-    const [done, setDone] = useState([]);
+    const [queue, setQueue] = useState<TasksType[]>([]);
+    const [dev, setDev] = useState<TasksType[]>([]);
+    const [done, setDone] = useState<TasksType[]>([]);
     const { id } = useParams();
     const { QUEUE, DEV, DONE } = COLUMN_NAMES;
 
@@ -38,6 +38,10 @@ export const Tasks = () => {
         const fQueue = items.filter(task => task.column === "queue");
         const fDev = items.filter(task => task.column === "dev");
         const fDone = items.filter(task => task.column === "done");
+
+        setQueue(fQueue);
+        setDev(fDev);
+        setDone(fDone);
     }, [items])
 
     console.log(items);
