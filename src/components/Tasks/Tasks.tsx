@@ -19,7 +19,7 @@ export const Tasks = () => {
     const [dev, setDev] = useState<TasksType[]>([]);
     const [done, setDone] = useState<TasksType[]>([]);
     const { id } = useParams();
-    const statuses = ["queue", "dev", "done"];
+    const statuses = ["Queue", "Development", "Done"];
 
     const fetchTasksData = () => {
         fetch("./tasks.json").then(response => {
