@@ -5,7 +5,9 @@ type ColumnPropsType = {
 export const Column = ({status}: ColumnPropsType) => {
     return (
         <div>
-            {status}
+            <h2>
+                {status}
+            </h2>
         </div>
     )
 } 
