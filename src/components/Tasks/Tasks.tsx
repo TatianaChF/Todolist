@@ -4,6 +4,7 @@ import { Task } from "./Task/Task"
 import { CreateTask } from "../CreateTask/CreateTask"
 import { useParams } from "react-router"
 import { Toaster } from "react-hot-toast"
+import { Column } from "./Column/Column"
 
 export type TasksType = {
     id: string,
@@ -51,6 +52,9 @@ export const Tasks = () => {
             <Toaster />
             <div>
             <CreateTask items={items} setItems={setItems} />
+            {
+                statuses.map((status, index) => <Column key={index} status={status} />)
+            }
             {
                 items?.filter(tasks => tasks.id_projects?.toString() === id).map((value) => {
                     return (
