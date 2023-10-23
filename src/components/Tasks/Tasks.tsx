@@ -54,7 +54,9 @@ export const Tasks = () => {
             <CreateTask items={items} setItems={setItems} />
             <div className={styles.columns}>
                 {
-                    statuses.map((status, index) => <Column key={index} status={status} />)
+                    statuses.map((status, index) => <Column key={index} status={status} items={items} 
+                    setItems={setItems} queue={queue} 
+                    dev={dev} done={done} />)
                 }
             </div>
             {

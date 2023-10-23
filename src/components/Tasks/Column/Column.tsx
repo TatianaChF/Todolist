@@ -1,7 +1,14 @@
+import { Dispatch, SetStateAction } from "react";
+import { TasksType } from "../Tasks";
 import styles from "./Column.module.css";
 
 type ColumnPropsType = {
-    status: string
+    status: string,
+    items: TasksType[],
+    setItems: Dispatch<SetStateAction<TasksType[]>>,
+    queue: TasksType[],
+    dev: TasksType[],
+    done: TasksType[]
 }
 
 export const Column = ({status}: ColumnPropsType) => {
