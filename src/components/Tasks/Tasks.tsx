@@ -56,17 +56,9 @@ export const Tasks = () => {
                 {
                     statuses.map((status, index) => <Column key={index} status={status} items={items} 
                     setItems={setItems} queue={queue} 
-                    dev={dev} done={done} />)
+                    dev={dev} done={done} id={id} />)
                 }
             </div>
-            {
-                items?.filter(tasks => tasks.id_projects?.toString() === id).map((value) => {
-                    return (
-                        <Task key={value.id} id={value.id} id_projects={value.id_projects} 
-                        title={value.title} column={value.column} />
-                    )
-                })
-            }
             </div>
         </>
     )
