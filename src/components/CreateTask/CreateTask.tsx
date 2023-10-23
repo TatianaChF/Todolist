@@ -14,7 +14,7 @@ export const CreateTask = ({items, setItems}: TasksProps) => {
         id: "",
         id_projects: 0,
         title: "",
-        column: "queue"
+        column: "Queue"
     });
 
     const addTask = (task: TasksType) => {
@@ -36,14 +36,14 @@ export const CreateTask = ({items, setItems}: TasksProps) => {
             id: "",
             id_projects: 0,
             title: "",
-            column: "queue"
+            column: "Queue"
         });
 
         toast.success("Task created!");
     }
 
     const writeTask = (e: ChangeEvent<HTMLInputElement>) => {
-        setTask({id: uuidv4(), title: e.target.value, id_projects: 0, column: "queue"});
+        setTask({id: uuidv4(), title: e.target.value, id_projects: 0, column: "Queue"});
         
     }
 
