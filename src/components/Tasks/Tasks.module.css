@@ -1,0 +1,5 @@
+.columns {
+    width: 83%;
+    display: flex;
+    justify-content: space-between;
+}

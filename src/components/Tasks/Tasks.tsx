@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
-import { COLUMN_NAMES } from "../../constans"
 import { Task } from "./Task/Task"
 import { CreateTask } from "../CreateTask/CreateTask"
 import { useParams } from "react-router"
 import { Toaster } from "react-hot-toast"
 import { Column } from "./Column/Column"
+import styles from "./Tasks.module.css"
 
 export type TasksType = {
     id: string,
@@ -52,9 +52,11 @@ export const Tasks = () => {
             <Toaster />
             <div>
             <CreateTask items={items} setItems={setItems} />
-            {
-                statuses.map((status, index) => <Column key={index} status={status} />)
-            }
+            <div className={styles.columns}>
+                {
+                    statuses.map((status, index) => <Column key={index} status={status} />)
+                }
+            </div>
             {
                 items?.filter(tasks => tasks.id_projects?.toString() === id).map((value) => {
                     return (
