@@ -19,6 +19,7 @@ export const Task = ({id, id_projects, title, column, setItems, removeTask}: Tas
 
     const [{ isDragging }, drag] = useDrag(() => ({
         type: "task",
+        item: {id: id},
         collect: (monitor) => ({
             isDragging: !!monitor.isDragging()
         })
