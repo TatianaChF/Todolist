@@ -1,4 +1,7 @@
 .task_container {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
     margin-top: 15px;
     width: 80px;
     border-radius: 5px;
@@ -6,11 +9,15 @@
      -2px -2px 5px 0 rgba(0,0,0,.1),
     2px 2px 5px 0 rgba(0,0,0,.1),
     -2px 2px 5px 0 rgba(0,0,0,.1);
-    padding: 10px 50px;
+    padding: 5px 50px;
     background-color: rgb(226, 226, 226);
 }
 
-.task_label {
-    margin-left: 10px;
-    font-size: 20px;
+.title_task {
+    margin-left: -15px;
+}
+
+.img_remove {
+    width: 20px;
+    cursor: pointer;
 }
