@@ -15,8 +15,6 @@ type ColumnPropsType = {
 }
 
 export const Column = ({ status, items, setItems, queue, dev, done, id }: ColumnPropsType) => {
-    let count = queue.length;
-
     const removeTask = (id: string) => {
         const fTasks = items.filter((task) => task.id !== id);
 
