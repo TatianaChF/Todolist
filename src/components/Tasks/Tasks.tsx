@@ -45,8 +45,6 @@ export const Tasks = () => {
         setDone(fDone);
     }, [items])
 
-    console.log(items);
-
     return (
         <>
             <Toaster />
