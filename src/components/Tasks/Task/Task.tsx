@@ -2,6 +2,7 @@ import styles from "./Task.module.css"
 import { TasksType } from "../Tasks"
 import remove_task from "./../../../assets/remove.svg"
 import { Dispatch, SetStateAction } from "react";
+import { useDrag } from "react-dnd";
 
 export const TASK_DND_TYPE = "TASK_DND_TYPE";
 
@@ -15,9 +16,16 @@ type TaskType = {
 }
 
 export const Task = ({id, id_projects, title, column, setItems, removeTask}: TaskType) => {
+
+    const [{ isDragging }, drag] = useDrag(() => ({
+        type: "task",
+        collect: (monitor) => ({
+            isDragging: !!monitor.isDragging()
+        })
+    }))
     
     return (
-        <div className={styles.task_container}>
+        <div ref={drag} className={styles.task_container}>
             <p className={styles.title_task}>{title}</p>
             <svg onClick={() => removeTask(id)} className={styles.img_remove} viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="#3d3d3d" stroke="#3d3d3d">
                 <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
