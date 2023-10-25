@@ -26,7 +26,7 @@ export const Column = ({ status, items, setItems, queue, dev, done, id }: Column
                 .map((value) => {
                     return (
                         <Task key={value.id} id={value.id} id_projects={value.id_projects} 
-                        title={value.title} column={value.column} />
+                        title={value.title} column={value.column} setItems={setItems} />
                     )
                 })
             }

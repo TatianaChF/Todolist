@@ -1,10 +1,19 @@
 import styles from "./Task.module.css"
 import { TasksType } from "../Tasks"
 import remove_task from "./../../../assets/remove.svg"
+import { Dispatch, SetStateAction } from "react";
 
 export const TASK_DND_TYPE = "TASK_DND_TYPE";
 
-export const Task = ({id, id_projects, title, column}: TasksType) => {
+type TaskType = {
+    id: string,
+    id_projects?: number,
+    title: string,
+    column?: string,
+    setItems: Dispatch<SetStateAction<TasksType[]>>
+}
+
+export const Task = ({id, id_projects, title, column, setItems}: TaskType) => {
 
     const removeTask = (id: string) => {
         console.log(title);
