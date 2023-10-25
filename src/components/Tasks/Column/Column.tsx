@@ -16,6 +16,10 @@ type ColumnPropsType = {
 export const Column = ({ status, items, setItems, queue, dev, done, id }: ColumnPropsType) => {
     let count = queue.length;
 
+    const removeTask = (id: string) => {
+        console.log(id)
+    }
+
     return (
         <div className={styles.column}>
             <h2>
@@ -26,7 +30,7 @@ export const Column = ({ status, items, setItems, queue, dev, done, id }: Column
                 .map((value) => {
                     return (
                         <Task key={value.id} id={value.id} id_projects={value.id_projects} 
-                        title={value.title} column={value.column} setItems={setItems} />
+                        title={value.title} column={value.column} setItems={setItems} removeTask={removeTask} />
                     )
                 })
             }

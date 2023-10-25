@@ -10,14 +10,11 @@ type TaskType = {
     id_projects?: number,
     title: string,
     column?: string,
-    setItems: Dispatch<SetStateAction<TasksType[]>>
+    setItems: Dispatch<SetStateAction<TasksType[]>>,
+    removeTask: any
 }
 
-export const Task = ({id, id_projects, title, column, setItems}: TaskType) => {
-
-    const removeTask = (id: string) => {
-        console.log(title);
-    }
+export const Task = ({id, id_projects, title, column, setItems, removeTask}: TaskType) => {
     
     return (
         <div className={styles.task_container}>
