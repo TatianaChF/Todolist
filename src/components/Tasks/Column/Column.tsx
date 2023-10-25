@@ -17,7 +17,9 @@ export const Column = ({ status, items, setItems, queue, dev, done, id }: Column
     let count = queue.length;
 
     const removeTask = (id: string) => {
-        console.log(id)
+        const fTasks = items.filter((task) => task.id !== id);
+
+        setItems(fTasks);
     }
 
     return (
