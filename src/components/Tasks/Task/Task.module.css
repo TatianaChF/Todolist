@@ -20,4 +20,11 @@
 .img_remove {
     width: 20px;
     cursor: pointer;
+    fill: #808080;
+    transition: 0.3s;
+}
+
+.img_remove:hover {
+    fill: black;
+    transition: 0.3s;
 }
