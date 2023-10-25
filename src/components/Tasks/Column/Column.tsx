@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction } from "react";
 import { TasksType } from "../Tasks";
 import styles from "./Column.module.css";
 import { Task } from "../Task/Task";
+import toast from "react-hot-toast";
 
 type ColumnPropsType = {
     status: string,
@@ -20,6 +21,8 @@ export const Column = ({ status, items, setItems, queue, dev, done, id }: Column
         const fTasks = items.filter((task) => task.id !== id);
 
         setItems(fTasks);
+
+        toast("Task deleted!", { icon: "🗑️" });
     }
 
     return (
