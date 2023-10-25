@@ -25,7 +25,7 @@ export const Task = ({id, id_projects, title, column, setItems, removeTask}: Tas
     }))
     
     return (
-        <div ref={drag} className={styles.task_container}>
+        <div ref={drag} className={isDragging ? styles.task_container_drag : styles.task_container}>
             <p className={styles.title_task}>{title}</p>
             <svg onClick={() => removeTask(id)} className={styles.img_remove} viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="#3d3d3d" stroke="#3d3d3d">
                 <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
