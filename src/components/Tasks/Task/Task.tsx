@@ -9,8 +9,14 @@ export const Task = ({id, id_projects, title, column}: TasksType) => {
     return (
         <div className={styles.task_container}>
             <p className={styles.title_task}>{title}</p>
-            <img src={remove_task} alt="remove_task" className={styles.img_remove} />
+            <svg className={styles.img_remove} viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="#3d3d3d" stroke="#3d3d3d">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_iconCarrier">
+                    <path d="M352 480h320a32 32 0 1 1 0 64H352a32 32 0 0 1 0-64z"></path>
+                    <path d="M512 896a384 384 0 1 0 0-768 384 384 0 0 0 0 768zm0 64a448 448 0 1 1 0-896 448 448 0 0 1 0 896z"></path>
+                </g>
+            </svg>
         </div>
     )
 }
-
