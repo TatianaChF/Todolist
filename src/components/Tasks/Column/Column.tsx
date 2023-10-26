@@ -4,6 +4,7 @@ import styles from "./Column.module.css";
 import { Task } from "../Task/Task";
 import toast from "react-hot-toast";
 import { useDrop } from "react-dnd";
+import { title } from "process";
 
 type ColumnPropsType = {
     status: string,
@@ -32,7 +33,23 @@ export const Column = ({ status, items, setItems, queue, dev, done, id }: Column
     }
 
     const addItemToSection = (id: string) => {
-        console.log("droped", id);
+        console.log("droped", id, status);
+
+        setItems((prev) => {
+            console.log("prev", prev);
+
+            const modifiedTask = prev.map(task => {
+                if(task.id === id) {
+                    return {...task, column: status}
+                }
+
+                return task;
+            })
+
+            return modifiedTask;
+        });
+
+        toast("Task status changed", { icon: "🪄" });
     }
 
     return (
