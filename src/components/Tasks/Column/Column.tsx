@@ -3,6 +3,7 @@ import { TasksType } from "../Tasks";
 import styles from "./Column.module.css";
 import { Task } from "../Task/Task";
 import toast from "react-hot-toast";
+import { useDrop } from "react-dnd";
 
 type ColumnPropsType = {
     status: string,
@@ -15,16 +16,27 @@ type ColumnPropsType = {
 }
 
 export const Column = ({ status, items, setItems, queue, dev, done, id }: ColumnPropsType) => {
+    const [{ isOver }, drop] = useDrop(() => ({
+        accept: "task",
+        drop: (item: TasksType) => addItemToSection(item.id),
+        collect: (monitor) => ({
+            isOver: !!monitor.isOver()
+        })
+    }))
+
     const removeTask = (id: string) => {
         const fTasks = items.filter((task) => task.id !== id);
-
         setItems(fTasks);
 
         toast("Task deleted!", { icon: "🗑️" });
     }
 
+    const addItemToSection = (id: string) => {
+        console.log("droped", id);
+    }
+
     return (
-        <div className={styles.column}>
+        <div ref={drop} className={styles.column}>
             <h2>
                 {status}
             </h2>
