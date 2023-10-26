@@ -53,10 +53,13 @@ export const Column = ({ status, items, setItems, queue, dev, done, id }: Column
     }
 
     return (
-        <div ref={drop} className={styles.column}>
-            <h2>
-                {status}
-            </h2>
+        <div ref={drop}>
+            <div className={status === "Queue" ? styles.header_column_queue : status === "Done" 
+            ? styles.header_column_done : styles.header_column_dev}>
+                <h2>
+                    {status}
+                </h2>
+            </div>
             {
                 items?.filter(tasks => tasks.id_projects?.toString() === id).filter(task => task.column === status)
                 .map((value) => {

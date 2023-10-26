@@ -1,12 +1,29 @@
-.column {
+.header_column_queue,
+.header_column_dev,
+.header_column_done {
     margin-top: 15px;
-    width: 190px;
-    height: 340px;
+    width: 300px;
+    height: 40px;
     border-radius: 5px;
-    box-shadow: 2px -2px 5px 0 rgba(0,0,0,.1),
-     -2px -2px 5px 0 rgba(0,0,0,.1),
-    2px 2px 5px 0 rgba(0,0,0,.1),
-    -2px 2px 5px 0 rgba(0,0,0,.1);
-    padding: 10px 50px;
-    background-color: rgb(226, 226, 226);
+	padding: 0 15px;
+	color: #fff;
+}
+
+.header_column_queue {
+	background-color: #1a73e8;
+}
+
+.header_column_dev {
+    background-color: #e81a9c;
+}
+
+.header_column_done {
+    background-color: #13df2b;
+}
+
+.header_column_queue h2,
+.header_column_dev h2,
+.header_column_done h2 {
+    font-size: 18px;
+    padding: 5px 10px;
 }
