@@ -35,7 +35,7 @@ export const Projects = () => {
                 {
                     data?.map((value) => {
                         return (
-                        <Link to={`${value.id}`} key={value.id}>
+                        <Link className={styles.link} to={`${value.id}`} key={value.id}>
                             <Project key={value.id} id={value.id} title={value.title} status={value.status} />
                         </Link>)
                     })  
