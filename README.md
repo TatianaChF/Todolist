@@ -1,6 +1,6 @@
 <<<<<<< HEAD
 # Todolist
-Task Scheduler with React + Redux
+Task Scheduler with React + Mobx
 =======
 # Getting Started with Create React App
 
