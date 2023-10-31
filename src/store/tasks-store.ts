@@ -1,3 +1,4 @@
+import { action, makeObservable, observable } from 'mobx';
 import { v4 as uuidv4 } from 'uuid';
 
 class TasksStore {
@@ -7,7 +8,15 @@ class TasksStore {
         title: "",
         column: "Queue"
     }];
-    
+
+    constructor() {
+        makeObservable(this, {
+            tasksList: observable,
+            addTask: action,
+            removeTask: action
+        })
+    }
+
     addTask = (title: string) => {
         const task = {
             id: uuidv4(),
