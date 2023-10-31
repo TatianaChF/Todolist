@@ -1,4 +1,4 @@
-import { action, makeObservable, observable } from 'mobx';
+import { action, makeAutoObservable, makeObservable, observable } from 'mobx';
 import { v4 as uuidv4 } from 'uuid';
 
 class TasksStore {
@@ -10,11 +10,7 @@ class TasksStore {
     }];
 
     constructor() {
-        makeObservable(this, {
-            tasksList: observable,
-            addTask: action,
-            removeTask: action
-        })
+        makeAutoObservable(this);
     }
 
     addTask = (title: string) => {
