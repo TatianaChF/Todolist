@@ -5,6 +5,8 @@ import { useParams } from "react-router"
 import { Toaster } from "react-hot-toast"
 import { Column } from "./Column/Column"
 import styles from "./Tasks.module.css"
+import { observer } from "mobx-react-lite"
+import TasksStore from "../../store/tasks-store"
 
 export type TasksType = {
     id: string,
@@ -13,8 +15,9 @@ export type TasksType = {
     column?: string
 }
 
-export const Tasks = () => {
-    const [items, setItems] = useState<TasksType[]>([]);
+export const Tasks = observer(() => {
+    const { tasks, getTasksAction } = TasksStore;
+    const [items, setItems] = useState<TasksType[]>(tasks);
     const [queue, setQueue] = useState<TasksType[]>([]);
     const [dev, setDev] = useState<TasksType[]>([]);
     const [done, setDone] = useState<TasksType[]>([]);
@@ -32,7 +35,7 @@ export const Tasks = () => {
     }
 
     useEffect(() => {
-        fetchTasksData();
+        getTasksAction();
     }, [])
 
     useEffect(() => {
@@ -60,4 +63,4 @@ export const Tasks = () => {
             </div>
         </>
     )
-}
+})
