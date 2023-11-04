@@ -1,30 +1,36 @@
-import { action, makeAutoObservable, makeObservable, observable } from 'mobx';
+import { action, makeAutoObservable, makeObservable, observable, runInAction, toJS } from 'mobx';
 import { v4 as uuidv4 } from 'uuid';
+import { TasksType } from '../components/Tasks/Tasks';
+import { IPromiseBasedObservable, fromPromise } from 'mobx-utils';
 
 class TasksStore {
-    tasksList = [{
-        id: uuidv4(),
-        id_projects: 0,
-        title: "",
-        column: "Queue"
-    }];
+    tasks: TasksType[] = [];
 
     constructor() {
         makeAutoObservable(this);
     }
 
-    addTask = (title: string) => {
-        const task = {
-            id: uuidv4(),
-            id_projects: 0,
-            title: title,
-            column: "Queue"
-        }
+    getTasksAction = () =>  {
+        fetch("./tasks.json").then(response => {
+            return response.json();
+        }).then(data => {
+            console.log(data);
+            runInAction(() => {
+                this.tasks = data;
+            })
+            console.log(toJS(this.tasks));
+        }).catch((e: Error) => {
+            console.log(e.message);
+        })
+    }
 
-        this.tasksList.push(task);
+    addTaskAction = (task: TasksType) => {
+        console.log(task);
     }
 
     removeTask = (id: string) => {
-        this.tasksList = this.tasksList.filter((task) => task.id !== id);
+        console.log(id);
     }
 }
+
+export default new TasksStore();
