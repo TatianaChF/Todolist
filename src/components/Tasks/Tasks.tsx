@@ -7,7 +7,7 @@ import { Column } from "./Column/Column"
 import styles from "./Tasks.module.css"
 import { observer } from "mobx-react-lite"
 import { toJS } from "mobx"
-import { useStore } from "../../store/root-store-context"
+import { inject } from "mobx-react"
 
 export type TasksType = {
     id: string,
@@ -17,7 +17,6 @@ export type TasksType = {
 }
 
 export const Tasks = observer(() => {
-    const { tasksStore } = useStore();
     const [items, setItems] = useState<TasksType[]>([]);
     const [queue, setQueue] = useState<TasksType[]>([]);
     const [dev, setDev] = useState<TasksType[]>([]);
@@ -25,8 +24,19 @@ export const Tasks = observer(() => {
     const { id } = useParams();
     const statuses = ["Queue", "Development", "Done"];
 
+    const fetchProjects = () => {
+        fetch("./tasks.json")
+        .then(response => {
+            return response.json();
+        }).then(data => {
+            setItems(data);
+        }).catch((e: Error) => {
+            console.log(e.message)
+        })
+    }
+
     useEffect(() => {
-        
+        fetchProjects();
     }, [])
 
     useEffect(() => {

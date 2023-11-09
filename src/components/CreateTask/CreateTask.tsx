@@ -3,13 +3,14 @@ import { TasksType } from "../Tasks/Tasks"
 import styles from "./CreateTask.module.css"
 import { v4 as uuidv4 } from 'uuid';
 import toast from "react-hot-toast";
+import { observer } from "mobx-react-lite";
 
 export type TasksProps = {
     items: TasksType[],
     setItems: Dispatch<SetStateAction<TasksType[]>>
 }
 
-export const CreateTask = ({items, setItems}: TasksProps) => {
+export const CreateTask = observer(({items, setItems}: TasksProps) => {     
     const [task, setTask] = useState<TasksType>({
         id: "",
         id_projects: 0,
@@ -54,4 +55,4 @@ export const CreateTask = ({items, setItems}: TasksProps) => {
             <button className={styles.button_add} onClick={() => addTask}>Create</button>
         </form>
     )
-}
+})
