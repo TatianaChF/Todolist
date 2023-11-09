@@ -1,5 +1,7 @@
 import tasksStore from "./tasks-store";
 
-export class RootStore {
-    tasks = tasksStore;
-}
+const RootStore = {
+    tasks: new tasksStore(),
+};
+
+export default RootStore;
