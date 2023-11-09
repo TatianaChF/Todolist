@@ -6225,12 +6225,19 @@ mkdirp@~0.5.1:
   dependencies:
     minimist "^1.2.6"
 
-mobx-react-lite@^4.0.5:
+mobx-react-lite@^4.0.4, mobx-react-lite@^4.0.5:
   version "4.0.5"
   resolved "https://registry.yarnpkg.com/mobx-react-lite/-/mobx-react-lite-4.0.5.tgz#e2cb98f813e118917bcc463638f5bf6ea053a67b"
   integrity sha512-StfB2wxE8imKj1f6T8WWPf4lVMx3cYH9Iy60bbKXEs21+HQ4tvvfIBZfSmMXgQAefi8xYEwQIz4GN9s0d2h7dg==
   dependencies:
     use-sync-external-store "^1.2.0"
+
+mobx-react@^9.0.2:
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/mobx-react/-/mobx-react-9.0.2.tgz#2774da98c9baefc7699104c225ed807aa0094d07"
+  integrity sha512-EB7uHSEiwre69k+d4sx4qnEz378kvTgGzCNyBKDrTbgjXBnsjCNF9ZOKuXu/uBFWNg8Notb46ksVLv1Zau/t7g==
+  dependencies:
+    mobx-react-lite "^4.0.4"
 
 mobx-utils@^6.0.8:
   version "6.0.8"

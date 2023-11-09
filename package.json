@@ -12,6 +12,7 @@
     "@types/react-dom": "^18.0.10",
     "json-loader": "^0.5.7",
     "mobx": "^6.10.2",
+    "mobx-react": "^9.0.2",
     "mobx-react-lite": "^4.0.5",
     "mobx-utils": "^6.0.8",
     "react": "^18.2.0",
