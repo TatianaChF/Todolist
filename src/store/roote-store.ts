@@ -1,7 +1,7 @@
 import tasksStore from "./tasks-store";
 
 const RootStore = {
-    tasks: new tasksStore(),
+    tasksStore: new tasksStore(),
 };
 
 export default RootStore;
