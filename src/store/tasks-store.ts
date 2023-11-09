@@ -3,22 +3,22 @@ import { v4 as uuidv4 } from 'uuid';
 import { TasksType } from '../components/Tasks/Tasks';
 import { IPromiseBasedObservable, fromPromise } from 'mobx-utils';
 
-class TasksStore {
-    tasks: TasksType[] = [];
+class tasksStore {
+    tasks: TasksType[] = [];    
 
     constructor() {
         makeAutoObservable(this);
     }
 
-    getTasksAction = () =>  {
-        fetch("./tasks.json").then(response => {
+    setTasks = (tasks: TasksType[]) => {
+        this.tasks = tasks;
+    }   
+
+    getTasksAction = async () => {
+        await fetch("./tasks.json").then(response => {
             return response.json();
         }).then(data => {
-            console.log(data);
-            runInAction(() => {
-                this.tasks = data;
-            })
-            console.log(toJS(this.tasks));
+            this.setTasks(data);
         }).catch((e: Error) => {
             console.log(e.message);
         })
@@ -33,4 +33,4 @@ class TasksStore {
     }
 }
 
-export default new TasksStore();
+export default tasksStore;
