@@ -8,6 +8,7 @@ import styles from "./Tasks.module.css"
 import { observer } from "mobx-react-lite"
 import { toJS } from "mobx"
 import { inject } from "mobx-react"
+import { tasksStore } from "../../store/tasks-store"
 
 export type TasksType = {
     id: string,
@@ -17,26 +18,16 @@ export type TasksType = {
 }
 
 export const Tasks = observer(() => {
-    const [items, setItems] = useState<TasksType[]>([]);
+    const [tasks] = useState(() => new tasksStore());
+    const [items, setItems] = useState<TasksType[]>([]);    
     const [queue, setQueue] = useState<TasksType[]>([]);
     const [dev, setDev] = useState<TasksType[]>([]);
     const [done, setDone] = useState<TasksType[]>([]);
     const { id } = useParams();
     const statuses = ["Queue", "Development", "Done"];
 
-    const fetchProjects = () => {
-        fetch("./tasks.json")
-        .then(response => {
-            return response.json();
-        }).then(data => {
-            setItems(data);
-        }).catch((e: Error) => {
-            console.log(e.message)
-        })
-    }
-
     useEffect(() => {
-        fetchProjects();
+        tasks.fetchTasksData();
     }, [])
 
     useEffect(() => {
@@ -53,10 +44,10 @@ export const Tasks = observer(() => {
         <>
             <Toaster />
             <div>
-                <CreateTask items={items} setItems={setItems} />
+                <CreateTask items={tasks.tasksList} setItems={setItems} />
                 <div className={styles.columns}>
                     {
-                        statuses.map((status, index) => <Column key={index} status={status} items={items}
+                        statuses.map((status, index) => <Column key={index} status={status} items={tasks.tasksList}
                             setItems={setItems} queue={queue}
                             dev={dev} done={done} id={id} />)
                     }
