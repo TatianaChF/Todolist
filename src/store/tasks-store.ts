@@ -1,5 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import { TasksType } from "../components/Tasks/Tasks";
+import { toJS } from "mobx";
 
 export class tasksStore {
     tasksList: TasksType[] = [];
@@ -8,20 +9,19 @@ export class tasksStore {
         makeAutoObservable(this);
     }
 
-    async fetchTasksData() {
-        try {
-            const res = fetch("./tasks.json").then(response => {
-                return response.json();
-            }).then(data => {
-                this.setTasks(data);
-                console.log(this.tasksList);
-            })
-        } catch(error) {
-            console.log(error);
-        }
+    fetchTasksData() {
+        return fetch("./tasks.json")
+        .then(response => {
+            return response.json();
+        }).then(data => {
+            this.setTasks(data);
+        }).catch((e: Error) => {
+            console.log(e.message)
+        })
     }
 
     setTasks(data: TasksType[]) {
         this.tasksList = data;
     }
 }
+
