@@ -31,24 +31,24 @@ export const Tasks = observer(() => {
     }, [])
 
     useEffect(() => {
-        const fQueue = items.filter(task => task.column === "queue");
-        const fDev = items.filter(task => task.column === "dev");
-        const fDone = items.filter(task => task.column === "done");
+        const fQueue = tasks.tasksList.filter(task => task.column === "queue");
+        const fDev = tasks.tasksList.filter(task => task.column === "dev");
+        const fDone = tasks.tasksList.filter(task => task.column === "done");
 
         setQueue(fQueue);
         setDev(fDev);
         setDone(fDone);
-    }, [items])
+    }, [tasks.tasksList])
 
     return (
         <>
             <Toaster />
             <div>
-                <CreateTask items={tasks.tasksList} setItems={setItems} />
+                <CreateTask items={tasks.tasksList} setTasksAction={tasks.setTasksAction} />
                 <div className={styles.columns}>
                     {
                         statuses.map((status, index) => <Column key={index} status={status} items={tasks.tasksList}
-                            setItems={setItems} queue={queue}
+                        setItems={setItems} queue={queue}
                             dev={dev} done={done} id={id} />)
                     }
                 </div>
