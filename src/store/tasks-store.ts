@@ -2,7 +2,7 @@ import { makeAutoObservable } from "mobx";
 import { TasksType } from "../components/Tasks/Tasks";
 
 export class tasksStore {
-    tasks: TasksType[] = [];
+    tasksList: TasksType[] = [];
 
     constructor() {
         makeAutoObservable(this);
@@ -14,14 +14,14 @@ export class tasksStore {
                 return response.json();
             }).then(data => {
                 this.setTasks(data);
-                console.log(this.tasks);
+                console.log(this.tasksList);
             })
         } catch(error) {
             console.log(error);
         }
     }
 
-    setTasks(tasksList: TasksType[]) {
-        this.tasks = tasksList;
+    setTasks(data: TasksType[]) {
+        this.tasksList = data;
     }
 }
