@@ -1,6 +1,6 @@
-import { makeAutoObservable } from "mobx";
+import { action, makeAutoObservable } from "mobx";
 import { TasksType } from "../components/Tasks/Tasks";
-import { toJS } from "mobx";
+import { tasks } from "../tasks";
 
 export class tasksStore {
     tasksList: TasksType[] = [];
@@ -14,14 +14,14 @@ export class tasksStore {
         .then(response => {
             return response.json();
         }).then(data => {
-            this.setTasks(data);
+            this.setTasksAction(data);
         }).catch((e: Error) => {
             console.log(e.message)
         })
     }
 
-    setTasks(data: TasksType[]) {
-        this.tasksList = data;
+    setTasksAction = (data: TasksType[]) => {
+        this.tasksList = data;  
     }
 }
 

@@ -4,13 +4,16 @@ import styles from "./CreateTask.module.css"
 import { v4 as uuidv4 } from 'uuid';
 import toast from "react-hot-toast";
 import { observer } from "mobx-react-lite";
+import { tasksStore } from "../../store/tasks-store";
+import { action, toJS } from "mobx";
 
 export type TasksProps = {
     items: TasksType[],
-    setItems: Dispatch<SetStateAction<TasksType[]>>
+    setTasksAction: Dispatch<TasksType[]>
 }
 
-export const CreateTask = observer(({items, setItems}: TasksProps) => {     
+export const CreateTask = observer(({items, setTasksAction}: TasksProps) => {
+    const [tasks] = useState(() => new tasksStore());   
     const [task, setTask] = useState<TasksType>({
         id: "",
         id_projects: 0,
@@ -21,7 +24,7 @@ export const CreateTask = observer(({items, setItems}: TasksProps) => {
     const addTask = (task: TasksType) => {
         let newTasks = [task, ...items];
 
-        setItems(newTasks);
+        setTasksAction(newTasks);
     }
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
