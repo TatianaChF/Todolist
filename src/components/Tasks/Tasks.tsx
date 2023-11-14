@@ -30,6 +30,7 @@ export const Tasks = observer(() => {
         tasks.fetchTasksData();
     }, [])
 
+
     useEffect(() => {
         const fQueue = tasks.tasksList.filter(task => task.column === "queue");
         const fDev = tasks.tasksList.filter(task => task.column === "dev");
@@ -48,7 +49,7 @@ export const Tasks = observer(() => {
                 <div className={styles.columns}>
                     {
                         statuses.map((status, index) => <Column key={index} status={status} items={tasks.tasksList}
-                        setItems={setItems} queue={queue}
+                        setItems={tasks.setTasksAction} queue={queue}
                             dev={dev} done={done} id={id} />)
                     }
                 </div>

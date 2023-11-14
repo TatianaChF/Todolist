@@ -11,8 +11,8 @@ type TaskType = {
     id_projects?: number,
     title: string,
     column?: string,
-    setItems: Dispatch<SetStateAction<TasksType[]>>,
-    removeTask: any
+    setItems: Dispatch<TasksType[]>,
+    removeTask: (id: string) => void
 }
 
 export const Task = ({id, id_projects, title, column, setItems, removeTask}: TaskType) => {

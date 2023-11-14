@@ -1,6 +1,7 @@
 import { action, makeAutoObservable } from "mobx";
 import { TasksType } from "../components/Tasks/Tasks";
 import { tasks } from "../tasks";
+import toast from "react-hot-toast";
 
 export class tasksStore {
     tasksList: TasksType[] = [];
@@ -22,6 +23,13 @@ export class tasksStore {
 
     setTasksAction = (data: TasksType[]) => {
         this.tasksList = data;  
+    }
+
+    removeTaskAction = (id: string) => {
+        const fTasks = this.tasksList.filter((task) => task.id !== id);
+        this.setTasksAction(fTasks);
+
+        toast("Task deleted!", { icon: "🗑️" });
     }
 }
 
