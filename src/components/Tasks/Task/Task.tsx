@@ -3,6 +3,7 @@ import { TasksType } from "../Tasks"
 import remove_task from "./../../../assets/remove.svg"
 import { Dispatch, SetStateAction } from "react";
 import { useDrag } from "react-dnd";
+import { observer } from "mobx-react-lite";
 
 export const TASK_DND_TYPE = "TASK_DND_TYPE";
 
@@ -15,7 +16,7 @@ type TaskType = {
     removeTask: (id: string) => void
 }
 
-export const Task = ({id, id_projects, title, column, setItems, removeTask}: TaskType) => {
+export const Task = observer(({id, id_projects, title, column, setItems, removeTask}: TaskType) => {
 
     const [{ isDragging }, drag] = useDrag(() => ({
         type: "task",
@@ -38,4 +39,4 @@ export const Task = ({id, id_projects, title, column, setItems, removeTask}: Tas
             </svg>
         </div>
     )
-}
+})
