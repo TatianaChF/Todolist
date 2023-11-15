@@ -6,7 +6,6 @@ import toast from "react-hot-toast";
 import { useDrop } from "react-dnd";
 import { title } from "process";
 import { observer } from "mobx-react-lite";
-import { tasksStore } from "../../../store/tasks-store";
 
 type ColumnPropsType = {
     status: string,
@@ -20,7 +19,6 @@ type ColumnPropsType = {
 }
 
 export const Column = observer(({ status, items, setTasksAction, queue, dev, done, id, removeTask }: ColumnPropsType) => {
-    const [tasks] = useState(() => new tasksStore());
     // const [{ isOver }, drop] = useDrop(() => ({
     //     accept: "task",
     //     drop: (item: TasksType) => addItemToSection(item.id),
