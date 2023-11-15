@@ -4,28 +4,18 @@ import styles from "./CreateTask.module.css"
 import { v4 as uuidv4 } from 'uuid';
 import toast from "react-hot-toast";
 import { observer } from "mobx-react-lite";
-import { tasksStore } from "../../store/tasks-store";
-import { action, toJS } from "mobx";
 
 export type TasksProps = {
-    items: TasksType[],
-    setTasksAction: Dispatch<TasksType[]>
+    addTaskAction: (task: TasksType) => void
 }
 
-export const CreateTask = observer(({items, setTasksAction}: TasksProps) => {
-    const [tasks] = useState(() => new tasksStore());   
+export const CreateTask = observer(({addTaskAction}: TasksProps) => {  
     const [task, setTask] = useState<TasksType>({
         id: "",
         id_projects: 0,
         title: "",
         column: "Queue"
     });
-
-    const addTask = (task: TasksType) => {
-        let newTasks = [task, ...items];
-
-        setTasksAction(newTasks);
-    }
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -35,7 +25,7 @@ export const CreateTask = observer(({items, setTasksAction}: TasksProps) => {
         if (task.title.length < 3) return toast.error("The task length cannot be shorter than 3!");
         else if (task.title.length > 100) return toast.error("The task length cannot be longer than 100!");
 
-        addTask(task);
+        addTaskAction(task);
         setTask({
             id: "",
             id_projects: 0,
@@ -55,7 +45,7 @@ export const CreateTask = observer(({items, setTasksAction}: TasksProps) => {
         <form onSubmit={handleSubmit}>
             <input className={styles.input_add} value={task?.title} placeholder="Task name" type="text" 
             onChange={writeTask} />
-            <button className={styles.button_add} onClick={() => addTask}>Create</button>
+            <button className={styles.button_add} onClick={() => addTaskAction}>Create</button>
         </form>
     )
 })

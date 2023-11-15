@@ -45,7 +45,7 @@ export const Tasks = observer(() => {
         <>
             <Toaster />
             <div>
-                <CreateTask items={tasks.tasksList} setTasksAction={tasks.setTasksAction} />
+                <CreateTask addTaskAction={tasks.addTaskAction} />
                 <div className={styles.columns}>
                     {
                         statuses.map((status, index) => <Column key={index} status={status} items={tasks.tasksList}
