@@ -1,4 +1,4 @@
-import { action, makeAutoObservable } from "mobx";
+import { action, makeAutoObservable, toJS } from "mobx";
 import { TasksType } from "../components/Tasks/Tasks";
 import { tasks } from "../tasks";
 import toast from "react-hot-toast";
@@ -10,7 +10,7 @@ export class tasksStore {
         makeAutoObservable(this);
     }
 
-    fetchTasksData() {
+    fetchTasksData = () => {
         return fetch("./tasks.json")
         .then(response => {
             return response.json();
@@ -25,9 +25,15 @@ export class tasksStore {
         this.tasksList = data;  
     }
 
+    addTaskAction = (task: TasksType) => {
+        let newTasksList = [task, ...this.tasksList];
+        this.setTasksAction(newTasksList);
+    }
+
     removeTaskAction = (id: string) => {
         const fTasks = this.tasksList.filter((task) => task.id !== id);
         this.setTasksAction(fTasks);
+        console.log(toJS(this.tasksList));
 
         toast("Task deleted!", { icon: "🗑️" });
     }
