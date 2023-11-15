@@ -11,14 +11,15 @@ import { tasksStore } from "../../../store/tasks-store";
 type ColumnPropsType = {
     status: string,
     items: TasksType[],
-    setItems: Dispatch<TasksType[]>,
+    setTasksAction: Dispatch<TasksType[]>,
     queue: TasksType[],
     dev: TasksType[],
     done: TasksType[],
-    id: string | undefined
+    id: string | undefined,
+    removeTask: (id: string) => void
 }
 
-export const Column = observer(({ status, items, setItems, queue, dev, done, id }: ColumnPropsType) => {
+export const Column = observer(({ status, items, setTasksAction, queue, dev, done, id, removeTask }: ColumnPropsType) => {
     const [tasks] = useState(() => new tasksStore());
     // const [{ isOver }, drop] = useDrop(() => ({
     //     accept: "task",
@@ -27,13 +28,6 @@ export const Column = observer(({ status, items, setItems, queue, dev, done, id 
     //         isOver: !!monitor.isOver()
     //     })
     // }))
-
-    const removeTask = (id: string) => {
-        const fTasks = items.filter((task) => task.id !== id);
-        setItems(fTasks);
-
-        toast("Task deleted!", { icon: "🗑️" });
-    }
 
     // const addItemToSection = (id: string) => {
     //     console.log("droped", id, status);
@@ -68,7 +62,7 @@ export const Column = observer(({ status, items, setItems, queue, dev, done, id 
                 .map((value) => {
                     return (
                         <Task key={value.id} id={value.id} id_projects={value.id_projects} 
-                        title={value.title} column={value.column} setItems={setItems} removeTask={tasks.removeTaskAction} />
+                        title={value.title} column={value.column} setTasksAction={setTasksAction} removeTask={removeTask} />
                     )
                 })
             }
