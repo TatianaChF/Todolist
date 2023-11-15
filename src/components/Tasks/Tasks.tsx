@@ -18,8 +18,7 @@ export type TasksType = {
 }
 
 export const Tasks = observer(() => {
-    const [tasks] = useState(() => new tasksStore());
-    const [items, setItems] = useState<TasksType[]>([]);    
+    const [tasks] = useState(() => new tasksStore());   
     const [queue, setQueue] = useState<TasksType[]>([]);
     const [dev, setDev] = useState<TasksType[]>([]);
     const [done, setDone] = useState<TasksType[]>([]);
@@ -28,6 +27,7 @@ export const Tasks = observer(() => {
 
     useEffect(() => {
         tasks.fetchTasksData();
+        console.log(toJS(tasks.tasksList));
     }, [])
 
 
@@ -49,8 +49,8 @@ export const Tasks = observer(() => {
                 <div className={styles.columns}>
                     {
                         statuses.map((status, index) => <Column key={index} status={status} items={tasks.tasksList}
-                        setItems={tasks.setTasksAction} queue={queue}
-                            dev={dev} done={done} id={id} />)
+                        setTasksAction={tasks.setTasksAction} queue={queue}
+                            dev={dev} done={done} id={id} removeTask={tasks.removeTaskAction} />)
                     }
                 </div>
             </div>
