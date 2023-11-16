@@ -1,14 +1,10 @@
 import { useEffect, useState } from "react"
-import { Task } from "./Task/Task"
 import { CreateTask } from "../CreateTask/CreateTask"
 import { useParams } from "react-router"
 import { Toaster } from "react-hot-toast"
 import { Column } from "./Column/Column"
 import styles from "./Tasks.module.css"
 import { observer } from "mobx-react-lite"
-import { toJS } from "mobx"
-import { inject } from "mobx-react"
-import { tasksStore } from "../../store/tasks-store"
 import { useStore } from "../../utils/StoreProvider"
 
 export type TasksType = {

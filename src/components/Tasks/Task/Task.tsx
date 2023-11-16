@@ -1,10 +1,7 @@
 import styles from "./Task.module.css"
 import { TasksType } from "../Tasks"
-import remove_task from "./../../../assets/remove.svg"
-import { Dispatch, SetStateAction, useState } from "react";
-import { useDrag } from "react-dnd";
-import { observer } from "mobx-react-lite";
-import { tasksStore } from "../../../store/tasks-store";
+import { Dispatch, SetStateAction, useState } from "react"
+import { useDrag } from "react-dnd"
 
 export const TASK_DND_TYPE = "TASK_DND_TYPE";
 
