@@ -13,15 +13,11 @@ export class tasksStore {
         makeAutoObservable(this);
     }
 
-    fetchTasksData = () => {
-        return fetch("./tasks.json")
-        .then(response => {
-            return response.json();
-        }).then(data => {
-            this.setTasksAction(data);
-        }).catch((e: Error) => {
-            console.log(e.message)
-        })
+    fetchTasksData = async () => {
+        let response = await fetch("./tasks.json");
+        let data = await response.json();
+        this.setTasksAction(data);
+        throw new Error("error");
     }
 
     setTasksAction = (data: TasksType[]) => {
