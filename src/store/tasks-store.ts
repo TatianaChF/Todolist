@@ -4,7 +4,7 @@ import { tasks } from "../tasks";
 import toast from "react-hot-toast";
 import { Store } from "./store";
 
-export class tasksStore {
+export class TasksStore {
     root: Store;
     tasksList: TasksType[] = [];
 

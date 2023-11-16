@@ -1,9 +1,9 @@
-import { tasksStore } from "./tasks-store";
+import { TasksStore } from "./tasks-store";
 
 export class Store {
-    tasksStore: tasksStore
+    tasksStore: TasksStore
 
     constructor() {
-        this.tasksStore = new tasksStore(this)
+        this.tasksStore = new TasksStore(this)
     }
 }
