@@ -45,8 +45,7 @@ export const Tasks = observer(() => {
                 <div className={styles.columns}>
                     {
                         statuses.map((status, index) => <Column key={index} status={status} items={store.tasksStore.tasksList}
-                        setTasksAction={store.tasksStore.setTasksAction} queue={queue}
-                            dev={dev} done={done} id={id} removeTask={store.tasksStore.removeTaskAction} />)
+                        setTasksAction={store.tasksStore.setTasksAction} id={id} removeTask={store.tasksStore.removeTaskAction} />)
                     }
                 </div>
             </div>

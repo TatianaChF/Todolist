@@ -37,4 +37,3 @@ export class TasksStore {
         toast("Task deleted!", { icon: "🗑️" });
     }
 }
-
