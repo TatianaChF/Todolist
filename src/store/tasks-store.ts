@@ -10,9 +10,9 @@ export class TasksStore {
     root: Store;
     tasksList: TasksType[] = [];
     draggedPosition: PositionType | null = null;
-    positions: Record<ColumnEnum, TasksType | null>;
+    positions: Record<ColumnEnum, string | null>;
 
-    constructor(root: Store, positions: Record<ColumnEnum, TasksType | null>) {
+    constructor(root: Store, positions: Record<ColumnEnum, string | null>) {
         this.root = root;
         makeAutoObservable(this);
         this.positions = positions
@@ -47,7 +47,14 @@ export class TasksStore {
     }
 
     onDrop = (taskId: string, position: PositionType) => {
+        const taskAtDrop = this.getItem(position);
 
+        if (taskAtDrop || !this.draggedPosition) {
+            return;
+        }
+
+        this.setItem(this.draggedPosition, null);
+        this.setItem(position, taskId)
     }
 
     getItem = (position: PositionType) => {
@@ -55,7 +62,7 @@ export class TasksStore {
         return this.positions[columnIndex];
     }
 
-    setItem = (position: PositionType, item: TasksType) => {
+    setItem = (position: PositionType, item: string | null) => {
         const [columnIndex] = position;
         this.positions[columnIndex] = item;
     }
