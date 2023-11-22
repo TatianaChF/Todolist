@@ -45,4 +45,18 @@ export class TasksStore {
     onDrag = (position: PositionType) => {
         this.draggedPosition = position;
     }
+
+    onDrop = (taskId: string, position: PositionType) => {
+
+    }
+
+    getItem = (position: PositionType) => {
+        const [columnIndex] = position;
+        return this.positions[columnIndex];
+    }
+
+    setItem = (position: PositionType, item: TasksType) => {
+        const [columnIndex] = position;
+        this.positions[columnIndex] = item;
+    }
 }
