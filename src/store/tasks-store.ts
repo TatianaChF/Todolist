@@ -41,4 +41,8 @@ export class TasksStore {
 
         toast("Task deleted!", { icon: "🗑️" });
     }
+
+    onDrag = (position: PositionType) => {
+        this.draggedPosition = position;
+    }
 }
