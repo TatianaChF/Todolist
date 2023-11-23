@@ -1,7 +1,6 @@
-export enum ColumnEnum {
-    queue,
-    developer,
-    done
+export type TasksType = {
+    id: string,
+    id_projects?: number,
+    title: string,
+    column?: string
 }
-
-export type PositionType = [ColumnEnum, id: string];

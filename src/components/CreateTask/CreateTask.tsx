@@ -1,9 +1,9 @@
 import { ChangeEvent, Dispatch, FormEvent, SetStateAction, useState } from "react"
-import { TasksType } from "../Tasks/Tasks"
 import styles from "./CreateTask.module.css"
 import { v4 as uuidv4 } from 'uuid';
 import toast from "react-hot-toast";
 import { observer } from "mobx-react-lite";
+import { TasksType } from "../../store/tasks-types";
 
 export type TasksProps = {
     addTaskAction: (task: TasksType) => void

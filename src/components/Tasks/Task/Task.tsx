@@ -1,7 +1,7 @@
 import styles from "./Task.module.css"
-import { TasksType } from "../Tasks"
 import { Dispatch, SetStateAction, useState } from "react"
 import { useDrag } from "react-dnd"
+import { TasksType } from "../../../store/tasks-types";
 
 export const TASK_DND_TYPE = "TASK_DND_TYPE";
 

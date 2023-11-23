@@ -6,13 +6,7 @@ import { Column } from "./Column/Column"
 import styles from "./Tasks.module.css"
 import { observer } from "mobx-react-lite"
 import { useStore } from "../../utils/StoreProvider"
-
-export type TasksType = {
-    id: string,
-    id_projects?: number,
-    title: string,
-    column?: string
-}
+import { TasksType } from "../../store/tasks-types"
 
 export const Tasks = observer(() => {
     const store = useStore();  
@@ -45,7 +39,8 @@ export const Tasks = observer(() => {
                 <div className={styles.columns}>
                     {
                         statuses.map((status, index) => <Column key={index} status={status} items={store.tasksStore.tasksList}
-                        setTasksAction={store.tasksStore.setTasksAction} id={id} removeTask={store.tasksStore.removeTaskAction} />)
+                        setTasksAction={store.tasksStore.setTasksAction} id={id} removeTask={store.tasksStore.removeTaskAction}
+                        addItemToSection={store.tasksStore.addItemToSection} />)
                     }
                 </div>
             </div>
