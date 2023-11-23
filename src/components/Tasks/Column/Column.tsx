@@ -25,27 +25,6 @@ export const Column = observer(({ status, items, setTasksAction, id, removeTask,
         })
     }))
 
-    // const addItemToSection = (id: string) => {
-
-    //     setTasksAction((prev: TasksType[]) => {
-    //         const modifiedTask = prev.map(task => {
-    //             if(task.id === id) {
-    //                 return {...task, column: status}
-    //             }
-
-    //             console.log(task)
-
-    //             return task;
-    //         })
-
-    //         console.log(modifiedTask);
-
-    //         return modifiedTask;
-    //     });
-
-    //     toast("Task status changed", { icon: "🪄" });
-    // }
-
         return (
             <div ref={drop}>
                 <div className={status === "Queue" ? styles.header_column_queue : status === "Done"
