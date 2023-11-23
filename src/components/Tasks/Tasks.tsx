@@ -40,7 +40,7 @@ export const Tasks = observer(() => {
                     {
                         statuses.map((status, index) => <Column key={index} status={status} items={store.tasksStore.tasksList}
                         setTasksAction={store.tasksStore.setTasksAction} id={id} removeTask={store.tasksStore.removeTaskAction}
-                        addItemToSection={store.tasksStore.addItemToSection} />)
+                        addItemToSection={store.tasksStore.addItemToSectionAction} />)
                     }
                 </div>
             </div>

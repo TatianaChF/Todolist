@@ -35,7 +35,7 @@ export class TasksStore {
         toast("Task deleted!", { icon: "🗑️" });
     }
 
-    addItemToSection = (id: string, status: string) => {
+    addItemToSectionAction = (id: string, status: string) => {
 
         const modifiedTask = this.tasksList.map(task => {
             if(task.id === id) {
