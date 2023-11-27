@@ -2,45 +2,41 @@ import { useEffect, useState } from "react"
 import { Project } from "./Project/Project"
 import styles from "./Projects.module.css"
 import { Link } from "react-router-dom";
+import { useStore } from "../../utils/StoreProvider";
+import { toJS } from "mobx";
 
 export type Data = {
     id: number,
     title: string,
-    status: string,
-    tasks: Array<any>
+    status: string
 }
 
 export const Projects = () => {
-    const [data, setData] = useState<Data[]>();
-
-    const fetchProjects = () => {
-        fetch("./projects.json")
-        .then(response => {
-            return response.json();
-        }).then(data => {
-            setData(data);
-        }).catch((e: Error) => {
-            console.log(e.message)
-        })
-    }
+    const store = useStore();
 
     useEffect(() => {
-        fetchProjects();
+        store.projectsStore.fetchProjectsData();
     }, [])
 
     return (
-        <div>
+        <>
             <h1 className={styles.header}>Projects</h1>
+            {
+                store.projectsStore.projectsList.map(value => {
+                    console.log(toJS(value));
+                })
+            }
             <div>
                 {
-                    data?.map((value) => {
+                    store.projectsStore.projectsList.map((value) => {
                         return (
-                        <Link className={styles.link} to={`${value.id}`} key={value.id}>
-                            <Project key={value.id} id={value.id} title={value.title} status={value.status} />
-                        </Link>)
-                    })  
+                            <Link className={styles.link} to={`${value.id}`} key={value.id}>
+                                <Project key={value.id} id={value.id} title={value.title} status={value.status} />
+                            </Link>
+                        )
+                    })
                 }
             </div>
-        </div>
+        </>
     )
 }
