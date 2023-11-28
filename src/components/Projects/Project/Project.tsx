@@ -1,4 +1,3 @@
-import { Data } from "../Projects"
 import styles from "./Project.module.css"
 
 type PropsData = {
