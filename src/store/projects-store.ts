@@ -11,15 +11,11 @@ export class ProjectsStore {
         makeAutoObservable(this);
     }
 
-    fetchProjectsData = () => {
-        fetch("./projects.json")
-        .then(response => {
-            return response.json();
-        }).then(data => {
-            this.setProjectsAction(data);
-        }).catch((e: Error) => {
-            console.log(e.message)
-        })
+    fetchProjectsData = async () => {
+        let response  = await fetch("./projects.json");
+        let data = await response.json();
+        this.setProjectsAction(data);
+        throw new Error("error");
     }
 
     setProjectsAction = (data: Data[]) => {
