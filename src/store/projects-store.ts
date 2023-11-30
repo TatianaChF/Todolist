@@ -21,4 +21,9 @@ export class ProjectsStore {
     setProjectsAction = (data: Data[]) => {
         this.projectsList = data;
     }
+
+    addProjectsAction = (project: Data) => {
+        let newProjectsList = [project, ...this.projectsList];
+        this.setProjectsAction(newProjectsList);
+    }
 }
