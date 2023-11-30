@@ -1,6 +1,6 @@
 import { Data } from "../components/Projects/Projects";
 import { Store } from "./store";
-import { makeAutoObservable, toJS } from "mobx";
+import { makeAutoObservable } from "mobx";
 
 export class ProjectsStore {
     root: Store;
