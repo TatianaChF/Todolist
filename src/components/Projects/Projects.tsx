@@ -3,7 +3,6 @@ import { Project } from "./Project/Project"
 import styles from "./Projects.module.css"
 import { Link } from "react-router-dom";
 import { useStore } from "../../utils/StoreProvider";
-import { toJS } from "mobx";
 
 export type Data = {
     id: number,
@@ -16,7 +15,6 @@ export const Projects = () => {
 
     useEffect(() => {
         store.projectsStore.fetchProjectsData();
-        console.log(toJS(store.projectsStore.projectsList))
     }, [])
 
     return (
