@@ -6,12 +6,9 @@
     justify-content: space-between;
     margin-top: 50px;
     border-radius: 5px;
-    box-shadow: 2px -2px 5px 0 rgba(0,0,0,.1),
-     -2px -2px 5px 0 rgba(0,0,0,.1),
-    2px 2px 5px 0 rgba(0,0,0,.1),
-    -2px 2px 5px 0 rgba(0,0,0,.1);
-    padding: 7px 20px;
+    border: 1px solid rgba(0, 0, 0, 0.522);
     margin-bottom: 10px;
+    padding: 3px 20px;
 }
 
 .project_title {
