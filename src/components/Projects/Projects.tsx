@@ -3,6 +3,7 @@ import { Project } from "./Project/Project"
 import styles from "./Projects.module.css"
 import { Link } from "react-router-dom";
 import { useStore } from "../../utils/StoreProvider";
+import { CreateProject } from "../CreateProject/CreateProject";
 
 export type Data = {
     id: number,
@@ -20,6 +21,7 @@ export const Projects = () => {
     return (
         <>
             <h1 className={styles.header}>Projects</h1>
+            <CreateProject />
             <div>
                 {
                     store.projectsStore.projectsList.map((value) => {
