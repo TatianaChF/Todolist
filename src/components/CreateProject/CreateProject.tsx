@@ -45,7 +45,3 @@ export const CreateProject = ( {addProjectsAction}: CreateProjectProps ) => {
         </form>
     )
 }
-
-function uuidv4(): number {
-    throw new Error("Function not implemented.")
-}
