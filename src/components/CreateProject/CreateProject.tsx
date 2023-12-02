@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Data } from "../Projects/Projects"
+import styles from "./CreateProjects.module.css"
 
 export const CreateProject = () => {
     const [project, setProjects] = useState<Data>({
@@ -9,8 +10,8 @@ export const CreateProject = () => {
     })
     return (
         <form>
-            <input />
-            <button>Create</button>
+            <input className={styles.input_add} />
+            <button className={styles.button_add}>Create</button>
         </form>
     )
 }
