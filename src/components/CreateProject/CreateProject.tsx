@@ -41,7 +41,7 @@ export const CreateProject = ( {addProjectsAction}: CreateProjectProps ) => {
         <form onSubmit={handleSubmit}>
             <input className={styles.input_add} value={project?.title} placeholder="Project name" type="text" 
             onChange={writeTask} />
-            <button className={styles.button_add}>Create</button>
+            <button className={styles.button_add} onClick={() => addProjectsAction}>Create</button>
         </form>
     )
 }
