@@ -16,12 +16,12 @@ export const Projects = () => {
 
     useEffect(() => {
         store.projectsStore.fetchProjectsData();
-    }, [])
+    }, [store.projectsStore.fetchProjectsData])
 
     return (
         <>
             <h1 className={styles.header}>Projects</h1>
-            <CreateProject />
+            <CreateProject addProjectsAction={store.projectsStore.addProjectsAction} />
             <div>
                 {
                     store.projectsStore.projectsList.map((value) => {
