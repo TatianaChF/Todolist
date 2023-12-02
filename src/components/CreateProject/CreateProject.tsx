@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react"
+import { ChangeEvent, FormEvent, useState } from "react"
 import { Data } from "../Projects/Projects"
 import styles from "./CreateProjects.module.css"
 import toast from "react-hot-toast"
@@ -32,10 +32,20 @@ export const CreateProject = ( {addProjectsAction}: CreateProjectProps ) => {
         toast.success("Project created!");
     }
 
+    const writeTask = (e: ChangeEvent<HTMLInputElement>) => {
+        setProjects({id: Math.random(), title: e.target.value, status: "open"});
+        
+    }
+
     return (
         <form onSubmit={handleSubmit}>
-            <input className={styles.input_add} />
+            <input className={styles.input_add} value={project?.title} placeholder="Project name" type="text" 
+            onChange={writeTask} />
             <button className={styles.button_add}>Create</button>
         </form>
     )
+}
+
+function uuidv4(): number {
+    throw new Error("Function not implemented.")
 }
