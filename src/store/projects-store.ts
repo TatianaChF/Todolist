@@ -12,9 +12,13 @@ export class ProjectsStore {
     }
 
     fetchProjectsData = async () => {
-        let response  = await fetch("./projects.json");
-        let projects = await response.json();
-        this.setProjectsAction(projects);
+        try {
+            let response = await fetch("./projects.json");
+            let projects = await response.json();
+            this.setProjectsAction(projects);
+        } catch(e) {
+            console.log(e);
+        }
         console.log(toJS(this.projectsList));
     }
 
