@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useStore } from "../../utils/StoreProvider";
 import { CreateProject } from "../CreateProject/CreateProject";
 
-export type Data = {
+export type Project = {
     id: string,
     title: string,
     status: string
@@ -16,7 +16,7 @@ export const Projects = () => {
 
     useEffect(() => {
         store.projectsStore.fetchProjectsData();
-    }, [store.projectsStore.fetchProjectsData])
+    }, [])
 
     return (
         <>

@@ -1,10 +1,10 @@
-import { Data } from "../components/Projects/Projects";
+import { Project } from "../components/Projects/Projects";
 import { Store } from "./store";
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, toJS } from "mobx";
 
 export class ProjectsStore {
     root: Store;
-    projectsList: Data[] = [];
+    projectsList: Project[] = [];
 
     constructor(root: Store) {
         this.root = root;
@@ -13,16 +13,16 @@ export class ProjectsStore {
 
     fetchProjectsData = async () => {
         let response  = await fetch("./projects.json");
-        let data = await response.json();
-        this.setProjectsAction(data);
-        throw new Error("error");
+        let projects = await response.json();
+        this.setProjectsAction(projects);
+        console.log(toJS(this.projectsList));
     }
 
-    setProjectsAction = (data: Data[]) => {
+    setProjectsAction = (data: Project[]) => {
         this.projectsList = data;
     }
 
-    addProjectsAction = (project: Data) => {
+    addProjectsAction = (project: Project) => {
         let newProjectsList = [project, ...this.projectsList];
         console.log(project);
         this.setProjectsAction(newProjectsList);

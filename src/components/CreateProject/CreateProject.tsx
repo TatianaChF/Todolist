@@ -1,15 +1,15 @@
 import { ChangeEvent, FormEvent, useState } from "react"
-import { Data } from "../Projects/Projects"
+import { Project } from "../Projects/Projects"
 import styles from "./CreateProjects.module.css"
 import toast from "react-hot-toast"
 import { v4 as uuidv4 } from 'uuid';
 
 type CreateProjectProps = {
-    addProjectsAction: (project: Data) => void;
+    addProjectsAction: (project: Project) => void;
 }
 
 export const CreateProject = ( {addProjectsAction}: CreateProjectProps ) => {
-    const [project, setProjects] = useState<Data>({
+    const [project, setProjects] = useState<Project>({
         id: "",
         title: "",
         status: "open"
