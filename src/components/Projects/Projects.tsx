@@ -17,19 +17,12 @@ export const Projects = observer(() => {
 
     useEffect(() => {
         store.projectsStore.fetchProjectsData();
-    }, [store.projectsStore.fetchProjectsData])
+    }, [])
 
     return (
         <>
             <h1 className={styles.header}>Projects</h1>
             <CreateProject addProjectsAction={store.projectsStore.addProjectsAction} />
-            {
-                store.projectsStore.projectsList?.map((value) => {
-                    return (
-                        value.title
-                    )
-                })
-            }
             <div>
             {
                 store.projectsStore.projectsList?.map((value) => {

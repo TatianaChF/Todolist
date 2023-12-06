@@ -19,7 +19,6 @@ export class ProjectsStore {
         } catch(e) {
             console.log(e);
         }
-        console.log(toJS(this.projectsList));
     }
 
     setProjectsAction = (data: Project[]) => {
