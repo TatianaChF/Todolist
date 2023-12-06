@@ -7,7 +7,6 @@ import { Project } from "../components/Projects/Projects";
 export class TasksStore {
     root: Store;
     tasksList: TasksType[] = [];
-    projectsList: Project[] = [];
 
     constructor(root: Store) {
         this.root = root;
@@ -15,10 +14,13 @@ export class TasksStore {
     }
 
     fetchTasksData = async () => {
-        let response = await fetch("./tasks.json");
-        let data = await response.json();
-        this.setTasksAction(data);
-        throw new Error("error");
+        try {
+            let response = await fetch("./tasks.json");
+            let tasks = await response.json();
+            this.setTasksAction(tasks);
+        } catch(e) {
+            console.log(e);
+        }
     }
 
     setTasksAction = (data: TasksType[]) => {
