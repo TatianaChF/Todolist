@@ -2,10 +2,12 @@ import { makeAutoObservable, toJS } from "mobx";
 import toast from "react-hot-toast";
 import { Store } from "./store";
 import { TasksType } from "./tasks-types";
+import { Project } from "../components/Projects/Projects";
 
 export class TasksStore {
     root: Store;
     tasksList: TasksType[] = [];
+    projectsList: Project[] = [];
 
     constructor(root: Store) {
         this.root = root;
