@@ -1,6 +1,6 @@
 export type TasksType = {
     id: string,
-    id_projects?: number,
+    id_projects?: string,
     title: string,
     column?: string
 }

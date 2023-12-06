@@ -6,7 +6,7 @@ import { useStore } from "../../utils/StoreProvider";
 import { CreateProject } from "../CreateProject/CreateProject";
 
 export type Data = {
-    id: number,
+    id: string,
     title: string,
     status: string
 }

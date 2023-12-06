@@ -7,14 +7,14 @@ export const TASK_DND_TYPE = "TASK_DND_TYPE";
 
 type TaskType = {
     id: string,
-    id_projects?: number,
+    id_projects?: string,
     title: string,
     column?: string,
     setTasksAction: Dispatch<TasksType[]>,
     removeTask: (id: string) => void
 }
 
-export const Task = ({id, id_projects, title, column, setTasksAction, removeTask}: TaskType) => {
+export const Task = ({id, title, removeTask}: TaskType) => {
 
     const [{ isDragging }, drag] = useDrag(() => ({
         type: "task",

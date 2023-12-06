@@ -1,7 +1,7 @@
 import styles from "./Project.module.css"
 
 type PropsData = {
-    id: number,
+    id: string,
     title: string,
     status: string
 }

@@ -34,7 +34,7 @@ export const Column = observer(({ status, items, setTasksAction, id, removeTask,
                     </h2>
                 </div>
                 {
-                    (items as TasksType[]).filter(tasks => tasks.id_projects?.toString() === id).filter(task => task.column === status)
+                    (items as TasksType[]).filter(tasks => tasks.id_projects === id).filter(task => task.column === status)
                         .map((value) => {
                             return (
                                 <Task key={value.id} id={value.id} id_projects={value.id_projects}

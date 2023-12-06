@@ -12,7 +12,7 @@ export type TasksProps = {
 export const CreateTask = observer(({addTaskAction}: TasksProps) => {  
     const [task, setTask] = useState<TasksType>({
         id: "",
-        id_projects: 0,
+        id_projects: "",
         title: "",
         column: "Queue"
     });
@@ -28,7 +28,7 @@ export const CreateTask = observer(({addTaskAction}: TasksProps) => {
         addTaskAction(task);
         setTask({
             id: "",
-            id_projects: 0,
+            id_projects: "",
             title: "",
             column: "Queue"
         });
@@ -37,7 +37,7 @@ export const CreateTask = observer(({addTaskAction}: TasksProps) => {
     }
 
     const writeTask = (e: ChangeEvent<HTMLInputElement>) => {
-        setTask({id: uuidv4(), title: e.target.value, id_projects: 0, column: "Queue"});
+        setTask({id: uuidv4(), title: e.target.value, id_projects: "0", column: "Queue"});
         
     }
 

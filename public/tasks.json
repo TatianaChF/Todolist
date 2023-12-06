@@ -1,85 +1,85 @@
 [
     {
         "id": "0",
-        "id_projects": 0,
+        "id_projects": "0",
         "title": "Task 380",
         "column": "Done"
     },
     {
         "id": "1",
-        "id_projects": 0,
+        "id_projects": "0",
         "title": "Task 381",
         "column": "Done"
     },
     {
         "id": "2",
-        "id_projects": 0,
+        "id_projects": "0",
         "title": "Task 382",
         "column": "Queue"
     },
     {
         "id": "3",
-        "id_projects": 1,
+        "id_projects": "1",
         "title": "Task 100",
         "column": "Queue"
     },
     {
         "id": "4",
-        "id_projects": 1,
+        "id_projects": "1",
         "title": "Task 101",
         "column": "Queue"
     },
     {
         "id": "5",
-        "id_projects": 2,
+        "id_projects": "2",
         "title": "Task 200",
         "column": "Queue"
     },
     {
         "id": "6",
-        "id_projects": 2,
+        "id_projects": "2",
         "title": "Task 201",
         "column": "Queue"
     },
     {
         "id": "7",
-        "id_projects": 2,
+        "id_projects": "2",
         "title": "Task 202",
         "column": "Queue"
     },
     {
         "id": "8",
-        "id_projects": 3,
+        "id_projects": "3",
         "title": "Task 300",
         "column": "Development"
     },
     {
         "id": "9",
-        "id_projects": 3,
+        "id_projects": "3",
         "title": "Task 301",
         "column": "Queue"
     },
     {
         "id": "10",
-        "id_projects": 3,
+        "id_projects": "3",
         "title": "Task 302",
         "column": "Queue"
     },
     {
         "id": "11",
-        "id_projects": 4,
+        "id_projects": "4",
         "title": "Task 400",
         "column": "Queue"
     },
     {
         "id": "12",
-        "id_projects": 4,
+        "id_projects": "4",
         "title": "Task 401",
         "column": "Queue"
     },
     {
         "id": "13",
-        "id_projects": 4,
+        "id_projects": "4",
         "title": "Task 402",
         "column": "Done"
     }
