@@ -7,7 +7,8 @@ export const Registration = () => {
                 <input type="text" placeholder="Enter login" name="login" id="login" />
                 <label htmlFor="psw"><b>Password</b></label>
                 <input type="password" placeholder="Enter password" name="psw" id="psw" />
+                <button type="submit">Register</button>
             </form>
         </div>
     )
-}
+}   
