@@ -9,7 +9,7 @@ function App() {
     <DndProvider backend={HTML5Backend}>
       <div className="App">
         <Link to="/registration">
-          <p>Регистрация</p>
+          <p>Registration</p>
         </Link>
         <Outlet />
       </div>
