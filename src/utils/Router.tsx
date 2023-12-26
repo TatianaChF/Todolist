@@ -14,12 +14,12 @@ export const router = createBrowserRouter([
                 element: <Projects />
             }, 
             {
-                path: ":id",
-                element: <Tasks />
-            },
-            {
                 path: ":registration",
                 element: <Registration />
+            },
+            {
+                path: ":id",
+                element: <Tasks />
             }
         ]
     },
