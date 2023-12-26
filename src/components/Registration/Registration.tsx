@@ -4,7 +4,7 @@ export const Registration = () => {
     return (
         <div>
             <form className={styles.form_registration}>
-                <h2>Registration</h2>
+                <h1>Registration</h1>
                 <div>
                     <label htmlFor="login"><b>Login</b></label>
                     <input type="text" placeholder="Enter login" name="login" id="login" />
