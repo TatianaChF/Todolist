@@ -52,5 +52,20 @@
 }
 
 .btn_back {
-    
+    color: #ffffff;
+    font-size: 20px;
+    display: block;
+    text-align: center;
+    letter-spacing: 0.1em;
+    padding: 12px 40px;
+    transition: all 0.5s ease;
+    border-radius: 57px;
+    background: #0d3c79;
+    text-decoration: none;
+}
+
+.btn_back:hover {
+    color: #000;
+    background-color: #88b4ed;
+    transition: 0.5s;
 }

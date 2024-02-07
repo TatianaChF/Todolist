@@ -17,7 +17,7 @@ export const Registration = () => {
                     </div>
                     <button type="submit">Register</button>
                 </form>
-                <Link to="/">
+                <Link to="/" className={styles.btn_back}>
                     <b>Come back</b>
                 </Link>
             </div>
