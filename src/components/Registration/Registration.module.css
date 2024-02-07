@@ -9,19 +9,34 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 20%;
-    height: 250px;
+    width: 40%;
+    height: 400px;
     background-color: rgba(238, 237, 237, 0.345);
     border-radius: 5px;
     border: 1px solid rgba(0, 0, 0, 0.522);
     margin-bottom: 10px;
-    padding: 3px 20px;
+    padding: 10px 40px;
 }
 
 .form_registration button {
+    background: #0d3c79;
+    color: #fff;
     border-radius: 5px;
-    width: 56%;
-    font-size: 18px;
+    width: 30%;
+    font-size: 20px;
+    text-decoration: none;
+    border: none;
+    padding: 10px 20px;
+    letter-spacing: 0.1em;
+    font-weight: bold;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.form_registration button:hover {
+    background: #88b4ed;
+    color: #000;
+    transition: 0.5s;
 }
 
 .form_input {
@@ -59,13 +74,14 @@
     letter-spacing: 0.1em;
     padding: 12px 40px;
     transition: all 0.5s ease;
-    border-radius: 57px;
-    background: #0d3c79;
+    border-radius: 4px;
+    border:  solid #000000;
+    background: #000;
     text-decoration: none;
 }
 
 .btn_back:hover {
     color: #000;
-    background-color: #88b4ed;
+    background-color: #fff;
     transition: 0.5s;
 }
